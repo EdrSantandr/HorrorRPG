@@ -28,7 +28,7 @@ func player_movement(delta: float):
 		# 4 means bottom animation
 		direction = 4
 		velocity.x = 0
-		velocity.y = SPEED		
+		velocity.y = SPEED
 	else:
 		direction = 0
 		velocity.x = 0
@@ -53,7 +53,6 @@ func play_direction_animation(direction: int, previous_velocity: Vector2):
 			animated_sprite.play("back_walk")
 
 	if direction == 0 && (abs(previous_velocity.x)!=0 || abs(previous_velocity.y)!=0):
-		print(previous_velocity)
 		var anim_to_play: String = "front_idle"
 		if previous_velocity.x > 0:
 			animated_sprite.flip_h = false
