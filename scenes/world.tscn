@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://jvnekjtx7sir"]
+[gd_scene load_steps=10 format=4 uid="uid://jvnekjtx7sir"]
 
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="1_dyv20"]
 [ext_resource type="Texture2D" uid="uid://ckujrvgrcye12" path="res://assets/tilesets/grass.png" id="2_g0yml"]
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="3_i33ld"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="4_xervr"]
+[ext_resource type="PackedScene" uid="uid://c2yy6s0jh5mpd" path="res://scenes/enemy.tscn" id="5_uvsau"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1kxel"]
 texture = ExtResource("1_dyv20")
@@ -84,7 +85,7 @@ texture = ExtResource("3_i33ld")
 11:2/0 = 0
 0:0/0 = 0
 0:0/0/y_sort_origin = 4
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 7, 8, 7.25, 20.75, -8, 20.75)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.25, 2.5, 4, 2.25, 4.75, 5.75, -5.25, 6)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.5, 8, -2, 8, 8, -8, 8)
 5:0/0 = 0
@@ -120,3 +121,6 @@ tile_map_data = PackedByteArray("AAABAAoAAgAAAAUAAAANAAAAAgAAAAUAAAASAAQAAgAAAAU
 tile_set = SubResource("TileSet_8u115")
 
 [node name="player" parent="." instance=ExtResource("4_xervr")]
+
+[node name="enemy" parent="." instance=ExtResource("5_uvsau")]
+position = Vector2(35, 111)

@@ -419,6 +419,7 @@ height = 14.0
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_qt53u")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
