@@ -5,7 +5,13 @@ var speed:float = 60
 var player_chase: bool = false
 var player: CharacterBody2D = null
 
+var player_in_attack_range: bool = false
+var health: int = 100
+var enemy_alive: bool = true
+
+
 func _physics_process(delta: float) -> void:
+	#handle_damage()
 	if player_chase:
 		position += (player.position - position)/speed
 		animated_sprite_2d.play("walk")
@@ -21,6 +27,29 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
 
+
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
+	
+	
+func enemy():
+	pass
+
+
+func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_attack_range = true
+
+
+func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_attack_range = false
+
+
+func handle_damage():
+	if player_in_attack_range and Global.player_current_attack:
+		health -= 20
+		print("slime health = ", health)
+		if health <= 0:
+			self.queue_free()
