@@ -12,7 +12,7 @@ const SPEED: float = 100
 var direction: int = 0 #means no direction
 var previous_direction: int = 4
 var previous_velocity: Vector2 = Vector2(0,0)
-var previous_idle_animation: String = "default"
+var previous_idle_animation: String = "front_idle"
 var enemy: CharacterBody2D = null
 
 func _physics_process(delta: float) -> void:
@@ -58,7 +58,7 @@ func player_movement(delta: float):
 	play_direction_animation(direction, previous_velocity)
 	move_and_slide()
 	previous_velocity = velocity
-	attack_state = Input.is_action_just_released("attack")
+	attack_state = Input.is_action_just_released("attack")	
 	play_attack_animation(previous_direction)
 
 
@@ -78,8 +78,6 @@ func play_attack_animation(direction: int):
 		# Handle damage to enemy
 		if enemy!= null && enemy_in_attack_range:
 			enemy.handle_damage()
-			Global.player_current_attack = false
-			attack_state = false
 		animated_sprite.animation_finished.connect(attack_animation_finished)
 
 
@@ -99,20 +97,21 @@ func play_direction_animation(direction: int, previous_velocity: Vector2):
 			animated_sprite.play("back_walk")
 
 	# Region to handle idle
-	if direction == 0 && !attack_state && (abs(previous_velocity.x)!=0 || abs(previous_velocity.y)!=0):
+	if direction == 0 && !attack_state:
 		var anim_to_play: String = "front_idle"
-		if previous_velocity.x > 0:
-			animated_sprite.flip_h = false
-			anim_to_play = "side_idle"
-		elif previous_velocity.x < 0:
-			animated_sprite.flip_h = true
-			anim_to_play = "side_idle"
-		elif previous_velocity.y < 0:
-			anim_to_play = "back_idle"
-		elif previous_velocity.y > 0:
-			anim_to_play = "front_idle"
-		previous_idle_animation = anim_to_play
-		animated_sprite.play(anim_to_play)
+		if  (abs(previous_velocity.x)!=0 || abs(previous_velocity.y)!=0):
+			if previous_velocity.x > 0:
+				animated_sprite.flip_h = false
+				anim_to_play = "side_idle"
+			elif previous_velocity.x < 0:
+				animated_sprite.flip_h = true
+				anim_to_play = "side_idle"
+			elif previous_velocity.y < 0:
+				anim_to_play = "back_idle"
+			elif previous_velocity.y > 0:
+				anim_to_play = "front_idle"
+			previous_idle_animation = anim_to_play
+			animated_sprite.play(anim_to_play)
 
 
 func player():
@@ -133,7 +132,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
-		health -= 10
+		health -= 5
 		enemy_attack_cooldown = false
 		timer_enemy_cooldown.start()
 
@@ -142,6 +141,9 @@ func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 
 
-func attack_animation_finished():	
+func attack_animation_finished():
+	attack_state = false
+	Global.player_current_attack = false
 	animated_sprite.stop()
 	animated_sprite.play(previous_idle_animation)
+	

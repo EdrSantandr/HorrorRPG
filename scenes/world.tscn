@@ -121,6 +121,7 @@ tile_map_data = PackedByteArray("AAABAAoAAgAAAAUAAAANAAAAAgAAAAUAAAASAAQAAgAAAAU
 tile_set = SubResource("TileSet_8u115")
 
 [node name="player" parent="." instance=ExtResource("4_xervr")]
+position = Vector2(88, 113)
 
 [node name="enemy" parent="." instance=ExtResource("5_uvsau")]
-position = Vector2(35, 111)
+position = Vector2(241, 128)
