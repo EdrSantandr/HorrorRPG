@@ -1,12 +1,15 @@
 extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $animated_sprite
 @onready var timer_enemy_cooldown: Timer = $timer_enemy_cooldown
+@onready var world_camera: Camera2D = $world_camera
+@onready var cliffside_camera: Camera2D = $cliffside_camera
 
 var enemy_in_attack_range: bool = false
 var enemy_attack_cooldown: bool = true
 var health: int = 100
 var player_alive: bool = true
 var attack_state: bool = false
+var last_player_position: Vector2 = Vector2(0,0)
 
 const SPEED: float = 100
 var direction: int = 0 #means no direction
@@ -18,6 +21,7 @@ var enemy: CharacterBody2D = null
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	enemy_attack()
+	current_camera()
 	
 	if health <= 0:
 		player_alive = false # restart game
@@ -146,4 +150,12 @@ func attack_animation_finished():
 	Global.player_current_attack = false
 	animated_sprite.stop()
 	animated_sprite.play(previous_idle_animation)
-	
+
+
+func current_camera():
+	if Global.current_scene == "world":
+		world_camera.enabled = true
+		cliffside_camera.enabled = false
+	elif Global.current_scene == "cliff_side":
+		world_camera.enabled = false
+		cliffside_camera.enabled = true
