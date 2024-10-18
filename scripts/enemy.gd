@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $health_bar
 
 var speed:float = 60
 var player_chase: bool = false
@@ -11,7 +12,7 @@ var enemy_alive: bool = true
 
 
 func _physics_process(delta: float) -> void:
-	#handle_damage()
+	update_health()
 	if player_chase:
 		position += (player.position - position)/speed
 		animated_sprite_2d.play("walk")
@@ -53,3 +54,11 @@ func handle_damage():
 		print("slime health = ", health)
 		if health <= 0:
 			self.queue_free()
+			
+
+func update_health():
+	health_bar.value = health
+	if health >= 100:
+		health_bar.visible = false
+	else:
+		health_bar.visible = true

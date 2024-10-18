@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var timer_enemy_cooldown: Timer = $timer_enemy_cooldown
 @onready var world_camera: Camera2D = $world_camera
 @onready var cliffside_camera: Camera2D = $cliffside_camera
+@onready var health_bar: ProgressBar = $health_bar
 
 var enemy_in_attack_range: bool = false
 var enemy_attack_cooldown: bool = true
@@ -22,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	enemy_attack()
 	current_camera()
+	update_health()
 	
 	if health <= 0:
 		player_alive = false # restart game
@@ -159,3 +161,16 @@ func current_camera():
 	elif Global.current_scene == "cliff_side":
 		world_camera.enabled = false
 		cliffside_camera.enabled = true
+
+func update_health():
+	health_bar.value = health
+	if health >= 100:
+		health_bar.visible = false
+	else:
+		health_bar.visible = true
+
+
+func _on_health_regen_timer_timeout() -> void:
+	if health < 100:
+		health += 5
+	health = clamp(health, 0, 100)
