@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://mj3tuwa3rqg7"]
+
+[ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="1_5vr7n"]
+[ext_resource type="Script" path="res://scripts/chest.gd" id="1_ga1lk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i0tc"]
+atlas = ExtResource("1_5vr7n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr3dm"]
+atlas = ExtResource("1_5vr7n")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4md3"]
+atlas = ExtResource("1_5vr7n")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vllk"]
+atlas = ExtResource("1_5vr7n")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_busf1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i0tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr3dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4md3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vllk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeg5d"]
+size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_l5jgj"]
+offsets = PackedFloat32Array(0.32, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uelsk"]
+gradient = SubResource("Gradient_l5jgj")
+fill = 1
+fill_from = Vector2(0.5, 0.3)
+
+[node name="chest" type="Area2D"]
+script = ExtResource("1_ga1lk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_busf1")
+animation = &"idle"
+frame = 2
+frame_progress = 0.98423
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oeg5d")
+
+[node name="chest_light" type="PointLight2D" parent="."]
+scale = Vector2(0.25, 0.25)
+color = Color(0.839216, 0.733333, 0.101961, 1)
+texture = SubResource("GradientTexture2D_uelsk")
+
+[node name="light_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="light_timer" to="." method="_on_light_timer_timeout"]
