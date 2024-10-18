@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://jvnekjtx7sir"]
+[gd_scene load_steps=13 format=4 uid="uid://jvnekjtx7sir"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_bj760"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="1_dyv20"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="3_i33ld"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="4_xervr"]
 [ext_resource type="PackedScene" uid="uid://c2yy6s0jh5mpd" path="res://scenes/enemy.tscn" id="5_uvsau"]
+[ext_resource type="PackedScene" uid="uid://mj3tuwa3rqg7" path="res://scenes/chest.tscn" id="7_x7730"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ep7ee"]
 texture = ExtResource("1_dyv20")
@@ -141,6 +142,9 @@ polygon = PackedVector2Array(-1, -1, 221, -1, 221, -40, 272, -40, 272, -1, 416, 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition"]
 position = Vector2(246.5, -20)
 shape = SubResource("RectangleShape2D_rp56x")
+
+[node name="chest" parent="." instance=ExtResource("7_x7730")]
+position = Vector2(78, 88)
 
 [connection signal="body_shape_entered" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_entered"]
 [connection signal="body_shape_exited" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_exited"]
