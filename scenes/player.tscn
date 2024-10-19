@@ -423,6 +423,7 @@ radius = 14.0
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
+input_pickable = true
 script = ExtResource("1_qt53u")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
@@ -480,6 +481,8 @@ show_percentage = false
 wait_time = 3.0
 autostart = true
 
+[connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
+[connection signal="area_exited" from="player_hitbox" to="." method="_on_player_hitbox_area_exited"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="timer_enemy_cooldown" to="." method="_on_attack_cooldown_timeout"]

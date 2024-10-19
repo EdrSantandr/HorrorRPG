@@ -12,6 +12,10 @@ var player_alive: bool = true
 var attack_state: bool = false
 var last_player_position: Vector2 = Vector2(0,0)
 
+var interact_state: bool = false
+var interactable_object: Area2D = null
+var interactable_in_range: bool = false
+
 const SPEED: float = 100
 var direction: int = 0 #means no direction
 var previous_direction: int = 4
@@ -30,7 +34,8 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Player has been killed")
 		self.queue_free()
-	
+
+
 func player_movement(delta: float):
 	if Input.is_action_pressed("move_right"):
 		# 1 means right animation
@@ -66,7 +71,17 @@ func player_movement(delta: float):
 	previous_velocity = velocity
 	attack_state = Input.is_action_just_released("attack")	
 	play_attack_animation(previous_direction)
+	
+	interact_state = Input.is_action_just_released("interaction")
+	if interact_state:
+		handle_interaction()
 
+
+func handle_interaction():
+	print("Interaction")
+	if interactable_in_range && interactable_object != null:
+		print(interactable_object.name)
+		interactable_object.interaction_with_player()
 
 func play_attack_animation(direction: int):
 	if attack_state:
@@ -134,6 +149,10 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
 		enemy = null
+	elif body.has_method("interactable"):
+		print("remove the interactable")
+		interactable_in_range = false
+		interactable_object = null
 
 
 func enemy_attack():
@@ -174,3 +193,17 @@ func _on_health_regen_timer_timeout() -> void:
 	if health < 100:
 		health += 5
 	health = clamp(health, 0, 100)
+
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	if area.has_method("interactable"):
+		print("got the interactable")
+		interactable_in_range = true
+		interactable_object = area
+
+
+func _on_player_hitbox_area_exited(area: Area2D) -> void:
+	if area.has_method("interactable"):
+		print("nNO interactable")
+		interactable_in_range = false
+		interactable_object = null
