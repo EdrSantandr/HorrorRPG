@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0eayg70koume"]
+
+[ext_resource type="Shader" path="res://assets/shaders/world_shader.gdshader" id="1_h4xr8"]
+[ext_resource type="Script" path="res://scenes/tests/shader_test_script_1.gd" id="2_4fdu6"]
+[ext_resource type="Texture2D" uid="uid://dsr8dj6owcca6" path="res://assets/textures/texture_950x950.png" id="3_qywh7"]
+[ext_resource type="Texture2D" uid="uid://bw1cscxu257py" path="res://assets/textures/spooky_test.png" id="4_lmihv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caina"]
+shader = ExtResource("1_h4xr8")
+shader_parameter/erosion_max_offset = 0.067
+shader_parameter/albedo = Color(0.489214, 0.27996, 0.225119, 1)
+shader_parameter/is_full_image = false
+shader_parameter/erosion = ExtResource("3_qywh7")
+
+[node name="ColorRect" type="ColorRect"]
+offset_right = 164.0
+offset_bottom = 164.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_4fdu6")
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_caina")
+position = Vector2(147, 80)
+scale = Vector2(0.16345, 0.14245)
+texture = ExtResource("4_lmihv")
+
+[node name="show_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="show_timer" to="." method="_on_show_timer_timeout"]
