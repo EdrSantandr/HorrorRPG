@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=28 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="6_8slio"]
 [ext_resource type="Texture2D" uid="uid://bhsgpnrmxve71" path="res://assets/tilesets/map_complete.png" id="6_yj362"]
 [ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_aivve"]
+[ext_resource type="Texture2D" uid="uid://dhpniqkx26c7m" path="res://assets/objects/chest_01.png" id="8_dpa85"]
+[ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -124,6 +126,78 @@ sources/2 = SubResource("TileSetAtlasSource_euru5")
 sources/3 = SubResource("TileSetAtlasSource_oofof")
 sources/4 = SubResource("TileSetAtlasSource_3eu6v")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyv3o"]
+atlas = ExtResource("8_dpa85")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13gtd"]
+atlas = ExtResource("8_dpa85")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5gsk"]
+atlas = ExtResource("8_dpa85")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slmdj"]
+atlas = ExtResource("8_dpa85")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8no6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyv3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13gtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5gsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slmdj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr0gs"]
+atlas = ExtResource("9_8wbnd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrad6"]
+atlas = ExtResource("9_8wbnd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckw54"]
+atlas = ExtResource("9_8wbnd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gol4"]
+atlas = ExtResource("9_8wbnd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j422g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr0gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrad6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckw54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gol4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="mansion" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_57nrc")
@@ -138,9 +212,11 @@ tile_set = SubResource("TileSet_j2mu5")
 
 [node name="interactable_a" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(193, -31)
+sprite_frames = SubResource("SpriteFrames_v8no6")
 
 [node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-18, -33)
+sprite_frames = SubResource("SpriteFrames_j422g")
 object_name = "object_b"
 
 [node name="interactable_bb" parent="interactables" instance=ExtResource("6_8slio")]
@@ -203,11 +279,11 @@ scale = Vector2(2, 2)
 [node name="mansion_outside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_outside_bounds"]
-polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204, -38, 135, -38, 138, -331, 170, -331, 170, -471, 152, -471, 152, -544, 114, -543, 113, -553, 90, -552, 89, -540, 54, -540, 53, -553, -17, -552, -18, -543, -47, -543, -47, -552, -95, -553, -95, -501, -178, -503, -178, -545, -222, -545, -223, -498, -245, -498, -245, -488, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -752, -481, -882, -484, -883, -450, -754, -448, -753, -392, -719, -392, -726, -101, -865, -99, -859, -10, -850, 0, -852, 117, -502, 116, -502, 26, -55, 27, -50, 62, -18, 62, -16, 119, 41, 119, 40, 185, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -136, 229, -143, 229, 208, 38, 206, 42, 184, 42, 121)
+polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204, -38, 135, -38, 138, -331, 170, -331, 170, -471, 152, -471, 152, -544, 114, -543, 113, -553, 90, -552, 89, -540, 54, -540, 53, -553, -17, -552, -18, -543, -47, -543, -47, -552, -95, -553, -95, -501, -178, -503, -178, -545, -222, -545, -223, -498, -245, -498, -245, -488, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -752, -481, -882, -484, -883, -450, -754, -448, -753, -392, -719, -392, -726, -101, -865, -99, -859, -10, -850, 0, -852, 117, -502, 116, -502, 37, -463, 37, -463, 26, -55, 27, -50, 62, -18, 62, -16, 119, 41, 119, 40, 185, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -136, 229, -143, 229, 208, 38, 206, 42, 184, 42, 121)
 
 [node name="mansion_inside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_inside_bounds"]
-polygon = PackedVector2Array(-30, -40, -29, -8, -147.652, -8.24927, -505, -9, -505, -16, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
+polygon = PackedVector2Array(-30, -40, -29, -8, -147.652, -8.24927, -148, -34, -171, -33, -171, -8, -328, -7, -329, -37, -351, -37, -349, -8, -464, -8, -464, -18, -500, -19, -511, -19, -512, -15, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
 [node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]

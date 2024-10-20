@@ -1,7 +1,7 @@
 extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $RigidBody2D/AnimatedSprite2D
-
+@export var sprite_frames: SpriteFrames
 
 var is_player_in_range:bool = false
 var is_player_already_interacted: bool = false
@@ -31,3 +31,8 @@ func interact() -> void:
 
 func interactable():
 	pass
+
+
+func _on_ready() -> void:
+	if sprite_frames != null:
+		animated_sprite_2d.sprite_frames = sprite_frames
