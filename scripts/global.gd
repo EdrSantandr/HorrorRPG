@@ -26,7 +26,7 @@ func scene_changed(body: Node2D):
 		if current_scene == "world":
 			player_exit_cliffside_pos =  body.position
 			player_exit_cliffside_pos.y += 10
-			current_scene = "cliff_side"
+			current_scene = "mansion"
 		else:
 			current_scene = "world"
 			player_start_pos = player_exit_cliffside_pos

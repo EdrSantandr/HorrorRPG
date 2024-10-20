@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $animated_sprite
 @onready var timer_enemy_cooldown: Timer = $timer_enemy_cooldown
 @onready var world_camera: Camera2D = $world_camera
-@onready var cliffside_camera: Camera2D = $cliffside_camera
+@onready var mansion_camera: Camera2D = $mansion_camera
 @onready var health_bar: ProgressBar = $health_bar
 
 var enemy_in_attack_range: bool = false
@@ -183,10 +183,10 @@ func attack_animation_finished():
 func current_camera():
 	if Global.current_scene == "world":
 		world_camera.enabled = true
-		cliffside_camera.enabled = false
-	elif Global.current_scene == "cliff_side":
+		mansion_camera.enabled = false
+	elif Global.current_scene == "mansion":
 		world_camera.enabled = false
-		cliffside_camera.enabled = true
+		mansion_camera.enabled = true
 
 func update_health():
 	health_bar.value = health
