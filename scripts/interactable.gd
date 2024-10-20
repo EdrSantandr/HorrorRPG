@@ -6,6 +6,7 @@ extends Area2D
 var is_player_in_range:bool = false
 var is_player_already_interacted: bool = false
 @export var object_name: String = "object_a"
+@export var object_description: String = "This is the text that need to shown ater interacting"
 
 func _on_body_entered(body: Node2D) -> void:
 	if !is_player_already_interacted:

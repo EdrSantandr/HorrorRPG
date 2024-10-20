@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="3_i33ld"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="4_xervr"]
 [ext_resource type="PackedScene" uid="uid://c2yy6s0jh5mpd" path="res://scenes/enemy.tscn" id="5_uvsau"]
-[ext_resource type="PackedScene" uid="uid://mj3tuwa3rqg7" path="res://scenes/chest.tscn" id="7_x7730"]
 [ext_resource type="PackedScene" uid="uid://bb2q565b4nckj" path="res://scenes/dialogue_area.tscn" id="8_mrmhm"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="9_lnyco"]
+[ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="9_rnrd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ep7ee"]
 texture = ExtResource("1_dyv20")
@@ -151,9 +151,6 @@ polygon = PackedVector2Array(-1, -1, 221, -1, 221, -40, 272, -40, 272, -1, 416, 
 position = Vector2(246.5, -20)
 shape = SubResource("RectangleShape2D_rp56x")
 
-[node name="chest" parent="." instance=ExtResource("7_x7730")]
-position = Vector2(78, 88)
-
 [node name="DialogueArea" parent="." instance=ExtResource("8_mrmhm")]
 position = Vector2(200, 56)
 dialogue_key = "test"
@@ -172,6 +169,9 @@ dialogue_key = "end_of_the_road"
 [node name="CollisionShape2D" parent="DialogueArea2" index="0"]
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_nt278")
+
+[node name="interactable" parent="." instance=ExtResource("9_rnrd5")]
+position = Vector2(102, 122)
 
 [connection signal="body_shape_entered" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_entered"]
 [connection signal="body_shape_exited" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_exited"]
