@@ -63,7 +63,7 @@ func player_movement(delta: float):
 	if velocity.length() != 0:
 		if !footstep_sound.playing:
 			footstep_sound.stream = stepsounds.pick_random()
-			footstep_sound.bus = &"SFX"
+			footstep_sound.bus = &"FootSteps"
 			footstep_sound.pitch_scale = randf_range(0.8, 1.2)
 			footstep_sound.play()
 	
