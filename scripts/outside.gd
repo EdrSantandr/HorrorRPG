@@ -5,6 +5,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ambience_outside.stream = Global.SOUND_ambience_outside
+	ambience_outside.bus = &"Music"
 	ambience_outside.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
