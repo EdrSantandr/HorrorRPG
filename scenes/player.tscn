@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://0i46woox88yd"]
+[gd_scene load_steps=58 format=3 uid="uid://0i46woox88yd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qt53u"]
 [ext_resource type="Texture2D" uid="uid://c7dp0igodejlr" path="res://assets/characters/player.png" id="2_2fxsh"]
@@ -420,6 +420,9 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpbd7"]
 radius = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpapx"]
+size = Vector2(20, 26)
+
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
@@ -480,6 +483,14 @@ show_percentage = false
 [node name="health_regen_timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="DialogueInteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteractionArea"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_tpapx")
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="area_exited" from="player_hitbox" to="." method="_on_player_hitbox_area_exited"]

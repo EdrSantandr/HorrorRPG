@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://jvnekjtx7sir"]
+[gd_scene load_steps=17 format=4 uid="uid://jvnekjtx7sir"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_bj760"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="1_dyv20"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="4_xervr"]
 [ext_resource type="PackedScene" uid="uid://c2yy6s0jh5mpd" path="res://scenes/enemy.tscn" id="5_uvsau"]
 [ext_resource type="PackedScene" uid="uid://mj3tuwa3rqg7" path="res://scenes/chest.tscn" id="7_x7730"]
+[ext_resource type="PackedScene" uid="uid://bb2q565b4nckj" path="res://scenes/dialogue_area.tscn" id="8_mrmhm"]
+[ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="9_lnyco"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ep7ee"]
 texture = ExtResource("1_dyv20")
@@ -105,6 +107,12 @@ sources/2 = SubResource("TileSetAtlasSource_1m1cu")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rp56x"]
 size = Vector2(51, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aggx"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt278"]
+size = Vector2(25, 36)
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_bj760")
@@ -146,5 +154,26 @@ shape = SubResource("RectangleShape2D_rp56x")
 [node name="chest" parent="." instance=ExtResource("7_x7730")]
 position = Vector2(78, 88)
 
+[node name="DialogueArea" parent="." instance=ExtResource("8_mrmhm")]
+position = Vector2(200, 56)
+dialogue_key = "test"
+
+[node name="CollisionShape2D" parent="DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_8aggx")
+
+[node name="DialoguePlayer" parent="." instance=ExtResource("9_lnyco")]
+scene_text_file = "res://assets/dialogueText/world_dialogue.json"
+
+[node name="DialogueArea2" parent="." instance=ExtResource("8_mrmhm")]
+position = Vector2(401, 104)
+dialogue_key = "end_of_the_road"
+
+[node name="CollisionShape2D" parent="DialogueArea2" index="0"]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_nt278")
+
 [connection signal="body_shape_entered" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_entered"]
 [connection signal="body_shape_exited" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_exited"]
+
+[editable path="DialogueArea"]
+[editable path="DialogueArea2"]
