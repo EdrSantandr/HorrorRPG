@@ -1,31 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://uj0jaa43byh8"]
+[gd_scene load_steps=10 format=3 uid="uid://uj0jaa43byh8"]
 
 [ext_resource type="Texture2D" uid="uid://b1hwq5xk5uu0e" path="res://assets/tilesets/fences.png" id="1_h5ak1"]
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_o0nty"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbbl3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r75c8"]
 atlas = ExtResource("1_h5ak1")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 16, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hvcu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kmt2"]
 atlas = ExtResource("1_h5ak1")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(16, 0, 16, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dx0i"]
 atlas = ExtResource("1_h5ak1")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd0mk"]
+atlas = ExtResource("1_h5ak1")
+region = Rect2(48, 0, 16, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5kg2w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kbbl3")
+"texture": SubResource("AtlasTexture_r75c8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4hvcu")
+"texture": SubResource("AtlasTexture_0kmt2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pbfsf")
+"texture": SubResource("AtlasTexture_1dx0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd0mk")
 }],
 "loop": true,
 "name": &"default",
@@ -43,6 +50,7 @@ gravity_scale = 0.0
 script = ExtResource("1_o0nty")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.875, 0.625)
 sprite_frames = SubResource("SpriteFrames_5kg2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

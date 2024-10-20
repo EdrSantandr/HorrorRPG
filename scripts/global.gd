@@ -56,12 +56,12 @@ func update_interaction_doors():
 		print("block_1 open")
 		if mansion != null:
 			mansion.remove_block("block_1")
-	elif (is_interacted_object_5 && !is_open_door_2):
+	elif (is_interacted_object_3 && is_interacted_object_4 && !is_open_door_2):
 		is_open_door_2 = true
 		print("block_2 open")
 		if mansion != null:
 			mansion.remove_block("block_2")
-	elif (is_interacted_object_3 && is_interacted_object_4 && is_interacted_object_6 && !is_open_door_3):
+	elif (is_interacted_object_5 && is_interacted_object_6 && !is_open_door_3):
 		is_open_door_3 = true
 		print("block_3 open")
 		if mansion != null:

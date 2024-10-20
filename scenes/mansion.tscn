@@ -279,7 +279,7 @@ area_name = "flower bouquet"
 shape = SubResource("RectangleShape2D_t2vv5")
 
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-339, -25)
+position = Vector2(-400, -505)
 object_name = "object_e"
 
 [node name="DialogueArea" parent="interactables/interactable_e" index="2"]
@@ -290,33 +290,38 @@ area_name = "xylophone"
 shape = SubResource("RectangleShape2D_pglaa")
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-640, -244)
+position = Vector2(-710, -250)
 object_name = "object_f"
+
+[node name="DialogueArea" parent="interactables/interactable_f" index="2"]
+dialogue_key = "end_of_the_road"
+area_name = "end_of_the_road"
+
+[node name="CollisionShape2D" parent="interactables/interactable_f/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_pglaa")
 
 [node name="interactable_ff" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(60, -779)
 object_name = "object_ff"
 
-[node name="interactable_dd" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-305, -488)
-object_name = "object_dd"
-
-[node name="interactable_ee" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-458, -484)
-object_name = "object_ee"
-
 [node name="blocks" type="Node" parent="."]
 
 [node name="block_1" parent="blocks" instance=ExtResource("7_aivve")]
-position = Vector2(-487, 9)
+position = Vector2(-71, 11)
 
 [node name="block_2" parent="blocks" instance=ExtResource("7_aivve")]
-position = Vector2(94, -59)
+position = Vector2(-678, -371)
+rotation = 1.5708
 block_name = "block_2"
 
 [node name="block_3" parent="blocks" instance=ExtResource("7_aivve")]
-position = Vector2(22, -208)
+position = Vector2(90, -310)
+rotation = 1.5708
 block_name = "block_3"
+
+[node name="block_4" parent="blocks" instance=ExtResource("7_aivve")]
+position = Vector2(-263, -478)
+block_name = "block_4"
 
 [node name="player" parent="." instance=ExtResource("5_d85je")]
 position = Vector2(76, 121)
@@ -325,12 +330,12 @@ scale = Vector2(2, 2)
 [node name="mansion_outside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_outside_bounds"]
-polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204, -38, 135, -38, 138, -331, 170, -331, 170, -471, 152, -471, 152, -544, 114, -543, 113, -553, 90, -552, 89, -540, 54, -540, 53, -553, -17, -552, -18, -543, -47, -543, -47, -552, -95, -553, -95, -501, -178, -503, -178, -545, -222, -545, -223, -498, -245, -498, -245, -488, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -752, -481, -882, -484, -883, -450, -754, -448, -753, -392, -719, -392, -726, -101, -865, -99, -859, -10, -850, 0, -852, 117, -502, 116, -502, 37, -463, 37, -463, 26, -55, 27, -50, 62, -18, 62, -16, 119, 41, 119, 40, 185, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -136, 229, -143, 229, 208, 38, 206, 42, 184, 42, 121)
+polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204, -38, 126, -38, 124, -73, 125, -289, 117, -290, 118, -332, 170, -331, 170, -471, 152, -471, 152, -544, 114, -543, 113, -553, 90, -552, 89, -540, 54, -540, 53, -553, -17, -552, -18, -543, -47, -543, -47, -552, -95, -553, -95, -501, -178, -503, -178, -545, -222, -545, -223, -498, -238.854, -498, -240, -505, -289, -505, -289, -486, -388, -487, -388, -519, -412, -519, -411.95, -486.494, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -752, -481, -882, -484, -883, -450, -754, -448, -753, -392, -706, -392, -706, -350, -721, -345, -726, -101, -865, -99, -859, -10, -850, 0, -852, 117, -502, 116, -501, 26, -95, 26, -95, 39, -54, 38, -50, 62, -18, 62, -16, 119, 41, 119, 40, 185, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -136, 229, -143, 229, 208, 38, 206, 42, 184, 42, 121)
 
 [node name="mansion_inside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_inside_bounds"]
-polygon = PackedVector2Array(-30, -40, -29, -8, -147.652, -8.24927, -148, -34, -171, -33, -171, -8, -328, -7, -329, -37, -351, -37, -349, -8, -464, -8, -464, -18, -500, -19, -511, -19, -512, -15, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
+polygon = PackedVector2Array(-30, -40, -29, -8, -47.5633, -8.039, -49, -17, -95, -16, -95, -8, -147.652, -8.24927, -148, -34, -171, -33, -171, -8, -328, -7, -329, -37, -351, -37, -352, -8, -464, -8, -499, -8, -499, -15, -511, -15, -556, -16, -556, -107, -629, -104, -630, -347, -651, -350, -651, -394, -531, -392, -531, -441, -286, -443, -285, -451, -245, -451, -244, -331, 62, -332, 62, -291, 55, -290, 50, -180, 60, -76, 58, -36, -7, -38, -7, -44, -30, -44, -54, -73, -56, -137, 38, -134, 34, -164, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
 [node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]
 
@@ -347,3 +352,5 @@ scene_text_file = "res://assets/dialogueText/world_dialogue.json"
 [editable path="interactables/interactable_d/DialogueArea"]
 [editable path="interactables/interactable_e"]
 [editable path="interactables/interactable_e/DialogueArea"]
+[editable path="interactables/interactable_f"]
+[editable path="interactables/interactable_f/DialogueArea"]
