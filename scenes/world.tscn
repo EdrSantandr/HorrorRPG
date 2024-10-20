@@ -157,6 +157,7 @@ position = Vector2(78, 88)
 [node name="DialogueArea" parent="." instance=ExtResource("8_mrmhm")]
 position = Vector2(200, 56)
 dialogue_key = "test"
+area_name = "test"
 
 [node name="CollisionShape2D" parent="DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_8aggx")
