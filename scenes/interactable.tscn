@@ -45,19 +45,24 @@ animations = [{
 }]
 
 [node name="interactable" type="Area2D"]
+y_sort_enabled = true
 input_pickable = false
 script = ExtResource("1_c3yar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_8gd40")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+y_sort_enabled = true
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+y_sort_enabled = true
 shape = SubResource("RectangleShape2D_2wkmm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_3s5gb")
 animation = &"idle"
 
