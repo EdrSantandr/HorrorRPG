@@ -35,16 +35,18 @@ func update_interaction_doors():
 	if (is_interacted_object_1 && is_interacted_object_2 && is_interacted_object_3):
 		is_open_door_1 = true
 		#todo open door 1
-	if (is_interacted_object_4 && is_interacted_object_5):
+	elif (is_interacted_object_4 && is_interacted_object_5):
 		is_open_door_2 = true
 		#todo open door 2
-	if (is_interacted_object_6):
+	elif (is_interacted_object_6):
 		is_open_door_3 = true
-		#todo open door 3
-	
+		print("block_3 open")
+		var world = get_tree().get_root().get_node("world")
+		if world != null:
+			world.remove_block("block_3")
+		
 
 func update_interaction_objects(object_name:String):
-	print(object_name)
 	match object_name:
 		"object_a":
 			is_interacted_object_1 = true
@@ -60,3 +62,4 @@ func update_interaction_objects(object_name:String):
 			is_interacted_object_6 = true
 		"object_g":
 			is_interacted_object_7 = true
+	update_interaction_doors()
