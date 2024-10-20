@@ -37,14 +37,7 @@ func open_block():
 
 func _on_ready() -> void:
 	unlock_loop.stream = Global.SOUND_LOOP_unlock_door
-	match block_name:
-		"block_1":
-			unlock_sound.stream = Global.SOUND_object_a
-		"block_2":
-			unlock_sound.stream = Global.SOUND_object_b
-		"block_3":
-			unlock_sound.stream = Global.SOUND_object_c
-		
+	unlock_sound.stream = Global.SOUND_door
 
 
 func _on_spooky_timer_timeout() -> void:

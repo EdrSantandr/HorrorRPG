@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://do6gbta66qevn"]
+
+[ext_resource type="Shader" path="res://scenes/tests/shader_test_3.gdshader" id="1_m3l2y"]
+[ext_resource type="Texture2D" uid="uid://cylrocinw6r15" path="res://scenes/tests/black_16x16.png" id="2_1f0y3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_615s1"]
+shader = ExtResource("1_m3l2y")
+shader_parameter/added_color = Color(0.363277, 0.00342407, 0.19969, 1)
+shader_parameter/alpha = 0.759
+
+[node name="CanvasLayer" type="CanvasLayer"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_615s1")
+position = Vector2(385.927, 215.333)
+scale = Vector2(48.2591, 27.0833)
+texture = ExtResource("2_1f0y3")

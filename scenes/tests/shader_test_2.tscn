@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfupnsm6cbd0t"]
+
+[ext_resource type="Shader" path="res://assets/shaders/world_shader.gdshader" id="2_y1q3l"]
+[ext_resource type="Texture2D" uid="uid://dsr8dj6owcca6" path="res://assets/textures/texture_950x950.png" id="3_14nkd"]
+[ext_resource type="Texture2D" uid="uid://bw1cscxu257py" path="res://assets/textures/spooky_test.png" id="4_bk30f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caina"]
+shader = ExtResource("2_y1q3l")
+shader_parameter/erosion_max_offset = 0.067
+shader_parameter/albedo = Color(0.804217, 0.242045, 0.223069, 1)
+shader_parameter/is_full_image = false
+shader_parameter/erosion = ExtResource("3_14nkd")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_caina")
+position = Vector2(383.781, 216.603)
+scale = Vector2(0.426169, 0.384114)
+texture = ExtResource("4_bk30f")
