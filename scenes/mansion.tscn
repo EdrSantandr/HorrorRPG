@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=34 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_aivve"]
 [ext_resource type="Texture2D" uid="uid://dhpniqkx26c7m" path="res://assets/objects/chest_01.png" id="8_dpa85"]
 [ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
+[ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -162,6 +163,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43n1y"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qr0gs"]
 atlas = ExtResource("9_8wbnd")
 region = Rect2(0, 0, 16, 16)
@@ -198,6 +201,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6idu1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecxmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2vv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pglaa"]
+
 [node name="mansion" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_57nrc")
@@ -214,10 +225,24 @@ tile_set = SubResource("TileSet_j2mu5")
 position = Vector2(193, -31)
 sprite_frames = SubResource("SpriteFrames_v8no6")
 
+[node name="DialogueArea" parent="interactables/interactable_a" index="2"]
+dialogue_key = "knife"
+area_name = "knife"
+
+[node name="CollisionShape2D" parent="interactables/interactable_a/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_43n1y")
+
 [node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-18, -33)
 sprite_frames = SubResource("SpriteFrames_j422g")
 object_name = "object_b"
+
+[node name="DialogueArea" parent="interactables/interactable_b" index="2"]
+dialogue_key = "photo"
+area_name = "photo"
+
+[node name="CollisionShape2D" parent="interactables/interactable_b/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_6idu1")
 
 [node name="interactable_bb" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-869, -476)
@@ -235,13 +260,34 @@ object_name = "object_cc"
 position = Vector2(-842, 104)
 object_name = "object_c"
 
+[node name="DialogueArea" parent="interactables/interactable_c" index="2"]
+dialogue_key = "doll"
+area_name = "doll"
+
+[node name="CollisionShape2D" parent="interactables/interactable_c/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_ecxmb")
+
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-158, -23)
 object_name = "object_d"
 
+[node name="DialogueArea" parent="interactables/interactable_d" index="2"]
+dialogue_key = "flower_bouquet"
+area_name = "flower bouquet"
+
+[node name="CollisionShape2D" parent="interactables/interactable_d/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_t2vv5")
+
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-339, -25)
 object_name = "object_e"
+
+[node name="DialogueArea" parent="interactables/interactable_e" index="2"]
+dialogue_key = "xylophone"
+area_name = "xylophone"
+
+[node name="CollisionShape2D" parent="interactables/interactable_e/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_pglaa")
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-640, -244)
@@ -287,3 +333,17 @@ polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204
 polygon = PackedVector2Array(-30, -40, -29, -8, -147.652, -8.24927, -148, -34, -171, -33, -171, -8, -328, -7, -329, -37, -351, -37, -349, -8, -464, -8, -464, -18, -500, -19, -511, -19, -512, -15, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
 [node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DialoguePlayer" parent="." instance=ExtResource("12_akbq6")]
+scene_text_file = "res://assets/dialogueText/world_dialogue.json"
+
+[editable path="interactables/interactable_a"]
+[editable path="interactables/interactable_a/DialogueArea"]
+[editable path="interactables/interactable_b"]
+[editable path="interactables/interactable_b/DialogueArea"]
+[editable path="interactables/interactable_c"]
+[editable path="interactables/interactable_c/DialogueArea"]
+[editable path="interactables/interactable_d"]
+[editable path="interactables/interactable_d/DialogueArea"]
+[editable path="interactables/interactable_e"]
+[editable path="interactables/interactable_e/DialogueArea"]
