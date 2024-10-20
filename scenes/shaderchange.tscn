@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7kxq2xq0hubm"]
+
+[ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="1_ptxgv"]
+[ext_resource type="Script" path="res://scripts/emit_shader.gd" id="2_lgi6c"]
+
+[node name="shaderchange" instance=ExtResource("1_ptxgv")]
+script = ExtResource("2_lgi6c")
+
+[editable path="DialogueArea"]

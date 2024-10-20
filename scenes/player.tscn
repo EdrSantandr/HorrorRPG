@@ -1,8 +1,13 @@
-[gd_scene load_steps=95 format=3 uid="uid://0i46woox88yd"]
+[gd_scene load_steps=100 format=3 uid="uid://0i46woox88yd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qt53u"]
 [ext_resource type="Texture2D" uid="uid://c7dp0igodejlr" path="res://assets/characters/player.png" id="2_2fxsh"]
+[ext_resource type="AudioStream" uid="uid://xhyqqg6jno4u" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep2.ogg" id="3_iob5f"]
 [ext_resource type="Texture2D" uid="uid://bthoo7u41apkp" path="res://assets/characters/ghost.png" id="3_snc54"]
+[ext_resource type="AudioStream" uid="uid://dc7wjpmsjjpkh" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep1.ogg" id="4_fxbcl"]
+[ext_resource type="AudioStream" uid="uid://cedd71wvxlprm" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep3.ogg" id="4_hf23w"]
+[ext_resource type="AudioStream" uid="uid://d0fncbusblr8x" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep4.ogg" id="5_ilm8b"]
+[ext_resource type="AudioStream" uid="uid://cbcuc63kbaxk0" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep5.ogg" id="6_q8buh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rh23s"]
 atlas = ExtResource("2_2fxsh")
@@ -712,6 +717,7 @@ y_sort_enabled = true
 collision_layer = 3
 input_pickable = true
 script = ExtResource("1_qt53u")
+stepsounds = [ExtResource("4_fxbcl"), ExtResource("3_iob5f"), ExtResource("4_hf23w"), ExtResource("5_ilm8b"), ExtResource("6_q8buh")]
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -775,6 +781,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteractionArea"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_tpapx")
+
+[node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="area_exited" from="player_hitbox" to="." method="_on_player_hitbox_area_exited"]

@@ -23,7 +23,11 @@ func interaction_with_player():
 		animated_sprite_2d.play("idle")
 		Global.update_interaction_objects(object_name)
 		remove_child(dialogue_area)
+		interact()
 		is_player_already_interacted = true
+
+func interact() -> void:
+	pass
 
 func interactable():
 	pass

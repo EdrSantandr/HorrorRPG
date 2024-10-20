@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var world_camera: Camera2D = $world_camera
 @onready var mansion_camera: Camera2D = $mansion_camera
 @onready var health_bar: ProgressBar = $health_bar
+@onready var footstep_sound: AudioStreamPlayer2D = $FootstepSound
+
+@export var stepsounds = []
 
 var health: int = 100
 var player_alive: bool = true
@@ -50,6 +53,12 @@ func player_movement(delta: float):
 	else :
 		direction = 0 
 	velocity = input_direction * SPEED
+	
+	if velocity.length() != 0:
+		if !footstep_sound.playing:
+			footstep_sound.stream = stepsounds.pick_random()
+			footstep_sound.pitch_scale = randf_range(0.8, 1.2)
+			footstep_sound.play()
 	
 	play_direction_animation(direction, previous_velocity)
 	move_and_slide()
