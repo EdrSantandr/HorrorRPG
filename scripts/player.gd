@@ -41,34 +41,18 @@ func _physics_process(delta: float) -> void:
 
 
 func player_movement(delta: float):
-	if Input.is_action_pressed("move_right"):
-		# 1 means right animation
+	var input_direction = Input.get_vector("move_left", "move_right", "move_top", "move_bottom")
+	if input_direction.x > 0:
 		direction = 1
-		previous_direction = direction
-		velocity.x = SPEED
-		velocity.y = 0
-	elif Input.is_action_pressed("move_left"):
-		# 2 means left animation
+	elif input_direction.x < 0:
 		direction = 2
-		previous_direction = direction
-		velocity.x = -SPEED
-		velocity.y = 0
-	elif Input.is_action_pressed("move_top"):
-		# 3 means top animation
+	elif input_direction.y < 0:
 		direction = 3
-		previous_direction = direction
-		velocity.x = 0
-		velocity.y = -SPEED
-	elif Input.is_action_pressed("move_bottom"):
-		# 4 means bottom animation
+	elif  input_direction.y > 0:
 		direction = 4
-		previous_direction = direction
-		velocity.x = 0
-		velocity.y = SPEED
-	else:
-		direction = 0
-		velocity.x = 0
-		velocity.y = 0
+	else :
+		direction = 0 
+	velocity = input_direction * SPEED
 	
 	play_direction_animation(direction, previous_velocity)
 	move_and_slide()
