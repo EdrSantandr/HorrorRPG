@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=16 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmuou3fowdebx" path="res://assets/tilesets/map_tiles.png" id="5_0ds42"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="5_d85je"]
 [ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="6_8slio"]
+[ext_resource type="Texture2D" uid="uid://bhsgpnrmxve71" path="res://assets/tilesets/map_complete.png" id="6_yj362"]
 [ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_aivve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
@@ -110,12 +111,18 @@ texture = ExtResource("5_0ds42")
 0:0/size_in_atlas = Vector2i(34, 28)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3eu6v"]
+texture = ExtResource("6_yj362")
+0:0/size_in_atlas = Vector2i(34, 28)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_j2mu5"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dbkh4")
 sources/1 = SubResource("TileSetAtlasSource_cg2kf")
 sources/2 = SubResource("TileSetAtlasSource_euru5")
 sources/3 = SubResource("TileSetAtlasSource_oofof")
+sources/4 = SubResource("TileSetAtlasSource_3eu6v")
 
 [node name="mansion" type="Node2D"]
 y_sort_enabled = true
@@ -124,10 +131,7 @@ script = ExtResource("1_57nrc")
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(-100, -120)
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 3, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_j2mu5")
-
-[node name="walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 4, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_j2mu5")
 
 [node name="interactables" type="Node" parent="."]
@@ -156,11 +160,11 @@ position = Vector2(-842, 104)
 object_name = "object_c"
 
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-157, -1)
+position = Vector2(-158, -23)
 object_name = "object_d"
 
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-338, -5)
+position = Vector2(-339, -25)
 object_name = "object_e"
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
@@ -185,7 +189,7 @@ object_name = "object_ee"
 position = Vector2(-487, 9)
 
 [node name="block_2" parent="blocks" instance=ExtResource("7_aivve")]
-position = Vector2(93, -72)
+position = Vector2(94, -59)
 block_name = "block_2"
 
 [node name="block_3" parent="blocks" instance=ExtResource("7_aivve")]
@@ -193,7 +197,8 @@ position = Vector2(22, -208)
 block_name = "block_3"
 
 [node name="player" parent="." instance=ExtResource("5_d85je")]
-position = Vector2(79, 126)
+position = Vector2(76, 121)
+scale = Vector2(2, 2)
 
 [node name="mansion_outside_bounds" type="StaticBody2D" parent="."]
 
@@ -203,6 +208,6 @@ polygon = PackedVector2Array(45, 120, 45, 185, 111, 186, 109, 117, 205, 117, 204
 [node name="mansion_inside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_inside_bounds"]
-polygon = PackedVector2Array(-30, -40, -29, -8, -505, -9, -505, -16, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
+polygon = PackedVector2Array(-30, -40, -29, -8, -147.652, -8.24927, -505, -9, -505, -16, -556, -16, -556, -107, -629, -104, -629, -394, -531, -392, -531, -441, -246, -442, -244, -331, 45, -331, 46, -237, -2, -236, -1, -179, 46, -179, 49, -38, -29, -40, -54, -73, -56, -137, 38, -134, 34, -164, -16, -164, -25, -248, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
 [node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]

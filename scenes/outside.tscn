@@ -211,6 +211,7 @@ tile_set = SubResource("TileSet_3yeuc")
 
 [node name="player" parent="." instance=ExtResource("7_eqjey")]
 position = Vector2(87, 98)
+scale = Vector2(2, 2)
 
 [node name="bounds" type="StaticBody2D" parent="."]
 

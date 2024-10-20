@@ -702,11 +702,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2eub"]
-radius = 4.0
+radius = 3.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpbd7"]
-radius = 14.0
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpapx"]
 size = Vector2(20, 26)
@@ -733,14 +733,14 @@ shape = SubResource("CapsuleShape2D_m2eub")
 [node name="player_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(0, -3)
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_rpbd7")
 
 [node name="timer_enemy_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="world_camera" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
 limit_right = 815
@@ -751,7 +751,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="mansion_camera" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 limit_left = -550
 limit_top = -715
 limit_right = 239
