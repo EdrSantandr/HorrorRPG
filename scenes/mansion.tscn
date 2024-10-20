@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=35 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhpniqkx26c7m" path="res://assets/objects/chest_01.png" id="8_dpa85"]
 [ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
+[ext_resource type="PackedScene" uid="uid://5itvtg0f7dn4" path="res://scenes/window.tscn" id="13_canj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -341,6 +342,23 @@ polygon = PackedVector2Array(-30, -40, -29, -8, -47.5633, -8.039, -49, -17, -95,
 
 [node name="DialoguePlayer" parent="." instance=ExtResource("12_akbq6")]
 scene_text_file = "res://assets/dialogueText/world_dialogue.json"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="window" parent="Node" instance=ExtResource("13_canj4")]
+position = Vector2(178, 126)
+
+[node name="window2" parent="Node" instance=ExtResource("13_canj4")]
+position = Vector2(-737, 115)
+
+[node name="window3" parent="Node" instance=ExtResource("13_canj4")]
+position = Vector2(-500, -508)
+
+[node name="window4" parent="Node" instance=ExtResource("13_canj4")]
+position = Vector2(34, -553)
+
+[node name="window5" parent="Node" instance=ExtResource("13_canj4")]
+position = Vector2(-116, -341)
 
 [editable path="interactables/interactable_a"]
 [editable path="interactables/interactable_a/DialogueArea"]
