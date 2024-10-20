@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var mansion_camera: Camera2D = $mansion_camera
 @onready var health_bar: ProgressBar = $health_bar
 @onready var footstep_sound: AudioStreamPlayer2D = $FootstepSound
+@onready var initial_shader_timer: Timer = $initial_shader_timer
+@onready var persistent_shader_timer: Timer = $persistent_shader_timer
 
 @export var stepsounds = []
 
@@ -20,6 +22,10 @@ var interactable_in_range: bool = false
 var block_object: RigidBody2D = null
 var block_in_range: bool = false
 
+var shader_initial_can_show: bool = false
+var shader_position:Vector2 = Vector2(0.0,0.0)
+var shader_instanced: CanvasLayer = null
+var persistent_shader_instanced: CanvasLayer = null
 
 const SPEED: float = 100
 var direction: int = 0 #means no direction
@@ -125,9 +131,14 @@ func current_camera():
 	if Global.current_scene == "world":
 		world_camera.enabled = true
 		mansion_camera.enabled = false
+		shader_initial_can_show = false
+		
 	elif Global.current_scene == "mansion":
 		world_camera.enabled = false
 		mansion_camera.enabled = true
+		shader_initial_can_show = true
+		shader_position = mansion_camera.position
+
 
 func update_health():
 	health_bar.value = health
@@ -159,3 +170,33 @@ func _on_player_hitbox_area_exited(area: Area2D) -> void:
 	elif area.get_parent().has_method("block"):
 		block_in_range = false
 		block_object = null
+
+
+func show_shader_initial():
+	if shader_initial_can_show:
+		var scene = load("res://scenes/tests/shader_test_2.tscn")
+		shader_instanced = scene.instantiate()
+		add_child(shader_instanced)
+		initial_shader_timer.start()
+
+
+func _on_ready() -> void:
+	pass
+
+
+func _on_initial_shader_timer_timeout() -> void:
+	if (shader_instanced != null):
+		var shader_color_rect: CanvasLayer = shader_instanced as CanvasLayer
+		var custom_material: Sprite2D = shader_color_rect.get_child(0, true) as Sprite2D
+		var full_image = custom_material.material
+		full_image.set_shader_parameter("is_full_image", true)
+		shader_instanced.queue_free()
+		#Show dialogue on top of the scene
+		var scene = load("res://scenes/tests/shader_test_3.tscn")
+		persistent_shader_instanced = scene.instantiate()
+		add_child(persistent_shader_instanced)
+		persistent_shader_timer.start()
+
+
+func _on_persistent_shader_timer_timeout() -> void:
+	persistent_shader_instanced.queue_free()
