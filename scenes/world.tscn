@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://jvnekjtx7sir"]
+[gd_scene load_steps=18 format=4 uid="uid://jvnekjtx7sir"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_bj760"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="1_dyv20"]
@@ -113,6 +113,8 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nt278"]
 size = Vector2(25, 36)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5cgx"]
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_bj760")
@@ -173,8 +175,17 @@ shape = SubResource("RectangleShape2D_nt278")
 [node name="interactable" parent="." instance=ExtResource("9_rnrd5")]
 position = Vector2(102, 122)
 
+[node name="DialogueArea" parent="interactable" index="2"]
+dialogue_key = "knife"
+area_name = "chest"
+
+[node name="CollisionShape2D" parent="interactable/DialogueArea" index="0"]
+shape = SubResource("RectangleShape2D_f5cgx")
+
 [connection signal="body_shape_entered" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_entered"]
 [connection signal="body_shape_exited" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_exited"]
 
 [editable path="DialogueArea"]
 [editable path="DialogueArea2"]
+[editable path="interactable"]
+[editable path="interactable/DialogueArea"]

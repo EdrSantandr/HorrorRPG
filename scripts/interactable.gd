@@ -6,7 +6,7 @@ extends Area2D
 var is_player_in_range:bool = false
 var is_player_already_interacted: bool = false
 @export var object_name: String = "object_a"
-@export var object_description: String = "This is the text that need to shown ater interacting"
+@onready var dialogue_area: Area2D = %DialogueArea
 
 func _on_body_entered(body: Node2D) -> void:
 	if !is_player_already_interacted:
@@ -22,6 +22,7 @@ func interaction_with_player():
 	if is_player_in_range && !is_player_already_interacted:
 		animated_sprite_2d.play("idle")
 		Global.update_interaction_objects(object_name)
+		remove_child(dialogue_area)
 		is_player_already_interacted = true
 
 func interactable():
