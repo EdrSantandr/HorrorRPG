@@ -1,9 +1,11 @@
 extends Node2D
+@onready var ambience_inside: AudioStreamPlayer2D = $ambience_inside
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	ambience_inside.stream = Global.SOUND_ambience_inside
+	ambience_inside.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

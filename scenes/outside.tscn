@@ -223,4 +223,6 @@ polygon = PackedVector2Array(13, 9, 33, 31, 30, 442, 782, 443, 783, 27, 479, 31,
 position = Vector2(408, 15)
 shape = SubResource("RectangleShape2D_fyuje")
 
+[node name="ambience_outside" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="transition" to="." method="_on_transition_body_entered"]

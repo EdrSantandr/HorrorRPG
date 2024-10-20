@@ -3,6 +3,11 @@ extends Node
 # Variables for object sounds
 const SOUND_LOOP_unlock_door = preload("res://assets/sounds/loop/LOOP_unlock_door.wav")
 
+# Variables for ambience sounds
+const SOUND_ambience_outside = preload("res://assets/sounds/ambience/SFX_Ambience_Outside.ogg")
+const SOUND_ambience_inside = preload("res://assets/sounds/ambience/SFX_Ambience_Inside.ogg")
+const SOUND_ambience_rain_window = preload("res://assets/sounds/ambience/SFX_Ambience_Rain_Window.ogg")
+
 # Variables for object sounds
 const SOUND_object_a = preload("res://assets/sounds/sfx/SFX_ObjectA_AttendanceBook.ogg")
 const SOUND_object_b = preload("res://assets/sounds/sfx/SFX_ObjectB_Knife.ogg")
@@ -10,6 +15,7 @@ const SOUND_object_c = preload("res://assets/sounds/sfx/SFX_ObjectC_Photo.ogg")
 const SOUND_object_d = preload("res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg")
 const SOUND_object_e = preload("res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg")
 const SOUND_object_f = preload("res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg")
+const SOUND_door = preload("res://assets/sounds/sfx/SFX_Object_Door.ogg")
 
 
 var player_current_attack = false
