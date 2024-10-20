@@ -11,8 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func change_scenes(body: Node2D):
-	if Global.is_transition_scene:
-		if Global.current_scene == "cliff_side":
-			Global.scene_changed(body)
-			get_tree().change_scene_to_file("res://scenes/world.tscn")
+func remove_block(name: String):
+	var block_child = find_child(name)
+	if block_child != null:
+		block_child.open_block()

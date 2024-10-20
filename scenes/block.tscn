@@ -33,10 +33,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk0p4"]
-size = Vector2(16, 16)
+size = Vector2(32, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd78d"]
-size = Vector2(56, 76)
+size = Vector2(46, 54)
 
 [node name="block" type="RigidBody2D"]
 gravity_scale = 0.0

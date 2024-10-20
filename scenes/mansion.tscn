@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=12 format=4 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
 [ext_resource type="Texture2D" uid="uid://ckujrvgrcye12" path="res://assets/tilesets/grass.png" id="3_yyhi6"]
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="4_iao4n"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="5_d85je"]
+[ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="6_8slio"]
+[ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_aivve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -122,3 +124,65 @@ tile_set = SubResource("TileSet_j2mu5")
 
 [node name="player" parent="." instance=ExtResource("5_d85je")]
 position = Vector2(79, 126)
+
+[node name="interactables" type="Node" parent="."]
+
+[node name="interactable_a" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(166, -6)
+
+[node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-6, -5)
+object_name = "object_b"
+
+[node name="interactable_bb" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-535, -373)
+object_name = "object_bb"
+
+[node name="interactable_aa" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(166, -373)
+object_name = "object_aa"
+
+[node name="interactable_cc" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-6, -260)
+object_name = "object_cc"
+
+[node name="interactable_c" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-535, 107)
+object_name = "object_c"
+
+[node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-147, 35)
+object_name = "object_d"
+
+[node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-271, 60)
+object_name = "object_e"
+
+[node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-457, -132)
+object_name = "object_f"
+
+[node name="interactable_ff" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(70, -511)
+object_name = "object_ff"
+
+[node name="interactable_dd" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-147, -333)
+object_name = "object_dd"
+
+[node name="interactable_ee" parent="interactables" instance=ExtResource("6_8slio")]
+position = Vector2(-271, -308)
+object_name = "object_ee"
+
+[node name="blocks" type="Node" parent="."]
+
+[node name="block_1" parent="blocks" instance=ExtResource("7_aivve")]
+position = Vector2(-341, 49)
+
+[node name="block_2" parent="blocks" instance=ExtResource("7_aivve")]
+position = Vector2(81, -38)
+block_name = "block_2"
+
+[node name="block_3" parent="blocks" instance=ExtResource("7_aivve")]
+position = Vector2(41, -143)
+block_name = "block_3"

@@ -32,18 +32,22 @@ func scene_changed(body: Node2D):
 			player_start_pos = player_exit_cliffside_pos
 
 func update_interaction_doors():
-	if (is_interacted_object_1 && is_interacted_object_2 && is_interacted_object_3):
+	var mansion = get_tree().get_root().get_node("mansion")
+	if (is_interacted_object_1 && is_interacted_object_2 && !is_open_door_1):
 		is_open_door_1 = true
-		#todo open door 1
-	elif (is_interacted_object_4 && is_interacted_object_5):
+		print("block_1 open")
+		if mansion != null:
+			mansion.remove_block("block_1")
+	elif (is_interacted_object_5 && !is_open_door_2):
 		is_open_door_2 = true
-		#todo open door 2
-	elif (is_interacted_object_6):
+		print("block_2 open")
+		if mansion != null:
+			mansion.remove_block("block_2")
+	elif (is_interacted_object_3 && is_interacted_object_4 && is_interacted_object_6 && !is_open_door_3):
 		is_open_door_3 = true
 		print("block_3 open")
-		var world = get_tree().get_root().get_node("world")
-		if world != null:
-			world.remove_block("block_3")
+		if mansion != null:
+			mansion.remove_block("block_3")
 		
 
 func update_interaction_objects(object_name:String):
