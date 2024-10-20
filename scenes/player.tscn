@@ -789,7 +789,7 @@ unique_name_in_owner = true
 wait_time = 1.5
 
 [node name="persistent_shader_timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]

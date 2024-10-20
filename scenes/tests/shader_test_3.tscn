@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://do6gbta66qevn"]
+[gd_scene load_steps=6 format=3 uid="uid://do6gbta66qevn"]
 
 [ext_resource type="Shader" path="res://scenes/tests/shader_test_3.gdshader" id="1_m3l2y"]
-[ext_resource type="Texture2D" uid="uid://cylrocinw6r15" path="res://scenes/tests/black_16x16.png" id="2_1f0y3"]
+[ext_resource type="Texture2D" uid="uid://bw1cscxu257py" path="res://assets/textures/spooky_test.png" id="2_6nma0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xev63"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_28pnw"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_xev63")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_615s1"]
 shader = ExtResource("1_m3l2y")
-shader_parameter/added_color = Color(0.363277, 0.00342407, 0.19969, 1)
-shader_parameter/alpha = 0.759
+shader_parameter/added_color = Color(0.288411, 0.0890972, 0.0124081, 1)
+shader_parameter/speed = Vector2(0.5, 0.2)
+shader_parameter/wave_strength = 0.3
+shader_parameter/alpha = 0.476
+shader_parameter/distortion = 0.001
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_28pnw")
 
 [node name="CanvasLayer" type="CanvasLayer"]
 scale = Vector2(1.5, 1.5)
@@ -14,6 +26,6 @@ transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 
 [node name="texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_615s1")
-position = Vector2(385.927, 215.333)
-scale = Vector2(48.2591, 27.0833)
-texture = ExtResource("2_1f0y3")
+position = Vector2(392.667, 222.667)
+scale = Vector2(0.453977, 0.44604)
+texture = ExtResource("2_6nma0")
