@@ -1,5 +1,8 @@
 extends RigidBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var unlock_loop: AudioStreamPlayer2D = $unlock_loop
+@onready var unlock_sound: AudioStreamPlayer2D = $unlock_sound
+@onready var spooky_timer: Timer = $spooky_timer
 
 @export var block_name: String = "block_1"
 var is_player_in_range = false
@@ -25,4 +28,28 @@ func _on_interactable_area_body_exited(body: Node2D) -> void:
 
 func open_block():
 	print("open block ",block_name)
+	#Here put the dialogue on top of the screen
+	#Start the shader showing
+	unlock_loop.play()
+	unlock_sound.play()
+	spooky_timer.start()
+
+
+func _on_ready() -> void:
+	unlock_loop.stream = Global.SOUND_LOOP_unlock_door
+	match block_name:
+		"block_1":
+			unlock_sound.stream = Global.SOUND_object_a
+		"block_2":
+			unlock_sound.stream = Global.SOUND_object_b
+		"block_3":
+			unlock_sound.stream = Global.SOUND_object_c
+		
+
+
+func _on_spooky_timer_timeout() -> void:
+	#Close the shader
+	unlock_loop.stop()
+	unlock_sound.stop()
+	print("door destroyed")
 	queue_free()

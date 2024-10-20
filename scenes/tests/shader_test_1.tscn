@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_caina"]
 shader = ExtResource("1_h4xr8")
 shader_parameter/erosion_max_offset = 0.067
-shader_parameter/albedo = Color(0.489214, 0.27996, 0.225119, 1)
+shader_parameter/albedo = Color(0.0600999, 0.0189845, 0.0121144, 1)
 shader_parameter/is_full_image = false
 shader_parameter/erosion = ExtResource("3_qywh7")
 

@@ -1,5 +1,17 @@
 extends Node
 
+# Variables for object sounds
+const SOUND_LOOP_unlock_door = preload("res://assets/sounds/loop/LOOP_unlock_door.wav")
+
+# Variables for object sounds
+const SOUND_object_a = preload("res://assets/sounds/sfx/SFX_ObjectA_AttendanceBook.ogg")
+const SOUND_object_b = preload("res://assets/sounds/sfx/SFX_ObjectB_Knife.ogg")
+const SOUND_object_c = preload("res://assets/sounds/sfx/SFX_ObjectC_Photo.ogg")
+const SOUND_object_d = preload("res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg")
+const SOUND_object_e = preload("res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg")
+const SOUND_object_f = preload("res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg")
+
+
 var player_current_attack = false
 
 var current_scene: String = "world"

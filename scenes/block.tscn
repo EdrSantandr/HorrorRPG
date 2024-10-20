@@ -56,5 +56,14 @@ collision_mask = 3
 [node name="collision" type="CollisionShape2D" parent="interactable_area"]
 shape = SubResource("RectangleShape2D_dd78d")
 
+[node name="unlock_loop" type="AudioStreamPlayer2D" parent="."]
+
+[node name="unlock_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="spooky_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]
 [connection signal="body_exited" from="interactable_area" to="." method="_on_interactable_area_body_exited"]
+[connection signal="timeout" from="spooky_timer" to="." method="_on_spooky_timer_timeout"]
