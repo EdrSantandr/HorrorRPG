@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ckujrvgrcye12" path="res://assets/tilesets/grass.png" id="3_63yey"]
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="4_3moda"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="5_e3e50"]
-[ext_resource type="PackedScene" uid="uid://c2yy6s0jh5mpd" path="res://scenes/enemy.tscn" id="6_wgkxp"]
+[ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_of62m"]
 [ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="7_sv4ay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ep7ee"]
@@ -129,9 +129,6 @@ tile_set = SubResource("TileSet_8u115")
 [node name="player" parent="." instance=ExtResource("5_e3e50")]
 position = Vector2(17, 61)
 
-[node name="enemy" parent="." instance=ExtResource("6_wgkxp")]
-position = Vector2(366, 117)
-
 [node name="map_collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map_collisions"]
@@ -150,15 +147,34 @@ autostart = true
 [node name="material_shader_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="interactable_a" parent="." instance=ExtResource("7_sv4ay")]
-position = Vector2(85, 109)
+[node name="interactables" type="Node" parent="."]
 
-[node name="interactable_b" parent="." instance=ExtResource("7_sv4ay")]
-position = Vector2(145, 152)
+[node name="interactable_a" parent="interactables" instance=ExtResource("7_sv4ay")]
+position = Vector2(289, 128)
+
+[node name="interactable_b" parent="interactables" instance=ExtResource("7_sv4ay")]
+position = Vector2(247, 199)
 object_name = "object_b"
+
+[node name="interactable_f" parent="interactables" instance=ExtResource("7_sv4ay")]
+position = Vector2(58, 105)
+object_name = "object_f"
+
+[node name="blocks" type="Node" parent="."]
+
+[node name="block_1" parent="blocks" instance=ExtResource("7_of62m")]
+position = Vector2(276, 77)
+
+[node name="block_2" parent="blocks" instance=ExtResource("7_of62m")]
+position = Vector2(353, 128)
+block_name = "block_2"
+
+[node name="block_3" parent="blocks" instance=ExtResource("7_of62m")]
+position = Vector2(133, 140)
+block_name = "block_3"
 
 [connection signal="body_shape_entered" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_entered"]
 [connection signal="body_shape_exited" from="cliffside_transition" to="." method="_on_cliffside_transition_body_shape_exited"]
 [connection signal="timeout" from="spawn_shader_timer" to="." method="_on_spawn_shader_timer_timeout"]
 [connection signal="timeout" from="material_shader_timer" to="." method="_on_material_shader_timer_timeout"]
-[connection signal="area_entered" from="interactable_a" to="." method="_on_interactable_a_area_entered"]
+[connection signal="area_entered" from="interactables/interactable_a" to="." method="_on_interactable_a_area_entered"]

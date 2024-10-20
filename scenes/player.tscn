@@ -450,22 +450,22 @@ shape = SubResource("CircleShape2D_rpbd7")
 wait_time = 0.5
 
 [node name="world_camera" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 416
-limit_bottom = 225
+limit_right = 815
+limit_bottom = 495
 limit_smoothed = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="cliffside_camera" type="Camera2D" parent="."]
+[node name="mansion_camera" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-limit_left = 0
-limit_top = 0
-limit_right = 220
-limit_bottom = 220
+limit_left = -550
+limit_top = -715
+limit_right = 185
+limit_bottom = 150
 limit_smoothed = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true

@@ -48,4 +48,3 @@ func _on_material_shader_timer_timeout() -> void:
 	#	var custom_material: Sprite2D = shader_color_rect.get_child(0, true) as Sprite2D
 	#	var full_image = custom_material.material
 	#	full_image.set_shader_parameter("is_full_image", true)
-	

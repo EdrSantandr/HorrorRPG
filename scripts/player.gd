@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $animated_sprite
 @onready var timer_enemy_cooldown: Timer = $timer_enemy_cooldown
 @onready var world_camera: Camera2D = $world_camera
-@onready var cliffside_camera: Camera2D = $cliffside_camera
+@onready var mansion_camera: Camera2D = $mansion_camera
 @onready var health_bar: ProgressBar = $health_bar
 
 var enemy_in_attack_range: bool = false
@@ -15,6 +15,10 @@ var last_player_position: Vector2 = Vector2(0,0)
 var interact_state: bool = false
 var interactable_object: Area2D = null
 var interactable_in_range: bool = false
+
+var block_object: RigidBody2D = null
+var block_in_range: bool = false
+
 
 const SPEED: float = 100
 var direction: int = 0 #means no direction
@@ -69,6 +73,7 @@ func player_movement(delta: float):
 	play_direction_animation(direction, previous_velocity)
 	move_and_slide()
 	previous_velocity = velocity
+	
 	attack_state = Input.is_action_just_released("attack")	
 	play_attack_animation(previous_direction)
 	
@@ -78,10 +83,13 @@ func player_movement(delta: float):
 
 
 func handle_interaction():
-	print("Interaction")
 	if interactable_in_range && interactable_object != null:
 		print(interactable_object.name)
 		interactable_object.interaction_with_player()
+	elif block_in_range && block_object != null:
+		print(block_object.name)
+		block_object.interaction_with_player()
+	
 
 func play_attack_animation(direction: int):
 	if attack_state:
@@ -150,7 +158,6 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 		enemy_in_attack_range = false
 		enemy = null
 	elif body.has_method("interactable"):
-		print("remove the interactable")
 		interactable_in_range = false
 		interactable_object = null
 
@@ -176,10 +183,10 @@ func attack_animation_finished():
 func current_camera():
 	if Global.current_scene == "world":
 		world_camera.enabled = true
-		cliffside_camera.enabled = false
-	elif Global.current_scene == "cliff_side":
+		mansion_camera.enabled = false
+	elif Global.current_scene == "mansion":
 		world_camera.enabled = false
-		cliffside_camera.enabled = true
+		mansion_camera.enabled = true
 
 func update_health():
 	health_bar.value = health
@@ -197,13 +204,17 @@ func _on_health_regen_timer_timeout() -> void:
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
 	if area.has_method("interactable"):
-		print("got the interactable")
 		interactable_in_range = true
 		interactable_object = area
+	elif area.get_parent().has_method("block"):
+		block_in_range = true
+		block_object = area.get_parent()
 
 
 func _on_player_hitbox_area_exited(area: Area2D) -> void:
 	if area.has_method("interactable"):
-		print("nNO interactable")
 		interactable_in_range = false
 		interactable_object = null
+	elif area.get_parent().has_method("block"):
+		block_in_range = false
+		block_object = null
