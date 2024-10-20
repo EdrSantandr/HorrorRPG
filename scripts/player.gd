@@ -63,6 +63,7 @@ func player_movement(delta: float):
 	if velocity.length() != 0:
 		if !footstep_sound.playing:
 			footstep_sound.stream = stepsounds.pick_random()
+			footstep_sound.bus = &"SFX"
 			footstep_sound.pitch_scale = randf_range(0.8, 1.2)
 			footstep_sound.play()
 	
@@ -199,4 +200,5 @@ func _on_initial_shader_timer_timeout() -> void:
 
 
 func _on_persistent_shader_timer_timeout() -> void:
-	persistent_shader_instanced.queue_free()
+	if (persistent_shader_instanced != null):
+		persistent_shader_instanced.queue_free()
