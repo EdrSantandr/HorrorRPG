@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bb2q565b4nckj" path="res://scenes/dialogue_area.tscn" id="3_vg34b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gd40"]
-radius = 32.0156
+radius = 41.0122
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wkmm"]
 
@@ -60,10 +60,12 @@ gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
 shape = SubResource("RectangleShape2D_2wkmm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 y_sort_enabled = true
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_3s5gb")
 animation = &"idle"
 
