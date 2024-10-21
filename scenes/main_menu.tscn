@@ -30,6 +30,7 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
 theme_override_font_sizes/font_size = 30
 text = "Start"
 
@@ -40,6 +41,7 @@ text = "Options"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 30
 text = "Exit"
 

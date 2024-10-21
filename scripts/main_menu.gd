@@ -2,6 +2,7 @@ extends Control
 @onready var options: Control = $Options
 
 func _ready() -> void:
+	$VBoxContainer/StartButton.grab_focus()
 	options.visible = false
 
 func _on_start_button_pressed() -> void:
