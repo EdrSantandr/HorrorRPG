@@ -135,7 +135,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 
 func current_camera():
-	if Global.current_scene == "world":
+	if Global.current_scene == "outside":
 		world_camera.enabled = true
 		mansion_camera.enabled = false
 		shader_initial_can_show = false
@@ -188,9 +188,10 @@ func show_shader_initial():
 
 
 func _on_ready() -> void:
-	#pass
+	Global.player_ref = self
 	#Uncomment for the forced fog
 	fog_sprite.hide()
+	
 
 
 func _on_initial_shader_timer_timeout() -> void:
@@ -210,3 +211,7 @@ func _on_initial_shader_timer_timeout() -> void:
 func _on_persistent_shader_timer_timeout() -> void:
 	if (persistent_shader_instanced != null):
 		persistent_shader_instanced.queue_free()
+		
+	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
+		Global.scene_changed(self)
+		get_tree().change_scene_to_file("res://scenes/outside.tscn")
