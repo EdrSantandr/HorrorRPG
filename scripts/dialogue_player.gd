@@ -8,6 +8,7 @@ var in_progress: bool = false
 
 @onready var background = $Panel
 @onready var text_label = $Panel/TextLabel
+@onready var character_sprite: Panel = $Panel2
 
 func _ready():
 	background.visible = false
@@ -23,6 +24,7 @@ func load_scene_text():
 
 func show_text():
 	text_label.text = selected_text.pop_front()
+	character_sprite.visible = text_label.text.left(1) != "("
 
 func next_line():
 	if selected_text.size() > 0:
@@ -32,6 +34,7 @@ func next_line():
 
 func finish():
 	text_label.text = ""
+	character_sprite.visible = false
 	background.visible = false
 	in_progress = false
 	get_tree().paused = false

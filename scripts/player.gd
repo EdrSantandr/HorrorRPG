@@ -79,6 +79,7 @@ func player_movement(delta: float):
 	
 	play_direction_animation(direction, previous_velocity)
 	move_and_slide()
+	MusicAudioStreamPlayer2d.position = position
 	previous_velocity = velocity
 	
 	interact_state = Input.is_action_just_released("interaction")

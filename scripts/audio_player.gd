@@ -3,7 +3,7 @@ extends AudioStreamPlayer2D
 const outside_level_music = preload("res://assets/sounds/ambience/SFX_Ambience_Outside.ogg")
 const inside_level_music = preload("res://assets/sounds/ambience/SFX_Ambience_Inside.ogg")
 
-func _play_music(music: AudioStream, volume=0.0):
+func _play_music(music: AudioStream, volume=-2.0):
 	bus = &"Music"
 	if stream == music:
 		return

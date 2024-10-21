@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 Global="*res://scripts/global.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 AudioPlayer="*res://scenes/audio_player.tscn"
+MusicAudioStreamPlayer2d="*res://scenes/music_audio_stream_player_2d.tscn"
 
 [display]
 

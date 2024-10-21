@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	Global.current_scene = "outside"
 	AudioPlayer.play_music_level()
+	MusicAudioStreamPlayer2d._play_music()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
