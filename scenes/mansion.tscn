@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=48 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -15,8 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 [ext_resource type="Texture2D" uid="uid://bpx1jaab5u1x" path="res://assets/tilesets/map_layers/map_wall_layer.png" id="9_aehvn"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
+[ext_resource type="AudioStream" uid="uid://ffxasfhr2frh" path="res://assets/sounds/sfx/SFX_ObjectA_AttendanceBook.ogg" id="12_uvm4m"]
 [ext_resource type="PackedScene" uid="uid://5itvtg0f7dn4" path="res://scenes/window.tscn" id="13_canj4"]
+[ext_resource type="AudioStream" uid="uid://ccxyr1y8k11ec" path="res://assets/sounds/sfx/SFX_ObjectB_Knife.ogg" id="14_c0dyx"]
 [ext_resource type="PackedScene" uid="uid://phu3valtba5m" path="res://scenes/pause_menu.tscn" id="14_dw0um"]
+[ext_resource type="AudioStream" uid="uid://c2avflumlk6cn" path="res://assets/sounds/sfx/SFX_ObjectC_Photo.ogg" id="15_5ef85"]
+[ext_resource type="AudioStream" uid="uid://dd2lyb2x1gx5l" path="res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg" id="16_ritbq"]
+[ext_resource type="AudioStream" uid="uid://cwgbwc16a1upm" path="res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg" id="17_71p50"]
+[ext_resource type="AudioStream" uid="uid://cwuct48yxcsex" path="res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg" id="18_ow234"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -262,6 +268,7 @@ tile_set = SubResource("TileSet_j2mu5")
 [node name="interactable_a" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(190, -22)
 sprite_frames = SubResource("SpriteFrames_v8no6")
+interact_sound_stream = ExtResource("12_uvm4m")
 
 [node name="DialogueArea" parent="interactables/interactable_a" index="2"]
 dialogue_key = "knife"
@@ -273,6 +280,7 @@ shape = SubResource("RectangleShape2D_43n1y")
 [node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(35, -24)
 sprite_frames = SubResource("SpriteFrames_j422g")
+interact_sound_stream = ExtResource("14_c0dyx")
 object_name = "object_b"
 
 [node name="DialogueArea" parent="interactables/interactable_b" index="2"]
@@ -296,6 +304,7 @@ object_name = "object_cc"
 
 [node name="interactable_c" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-835, 100)
+interact_sound_stream = ExtResource("15_5ef85")
 object_name = "object_c"
 
 [node name="DialogueArea" parent="interactables/interactable_c" index="2"]
@@ -307,6 +316,7 @@ shape = SubResource("RectangleShape2D_ecxmb")
 
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-158, -20)
+interact_sound_stream = ExtResource("16_ritbq")
 object_name = "object_d"
 
 [node name="DialogueArea" parent="interactables/interactable_d" index="2"]
@@ -318,6 +328,7 @@ shape = SubResource("RectangleShape2D_t2vv5")
 
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-400, -500)
+interact_sound_stream = ExtResource("17_71p50")
 object_name = "object_e"
 
 [node name="DialogueArea" parent="interactables/interactable_e" index="2"]
@@ -329,6 +340,7 @@ shape = SubResource("RectangleShape2D_pglaa")
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-707, -250)
+interact_sound_stream = ExtResource("18_ow234")
 object_name = "object_f"
 
 [node name="DialogueArea" parent="interactables/interactable_f" index="2"]

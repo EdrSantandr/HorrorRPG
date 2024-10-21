@@ -226,4 +226,3 @@ func _on_persistent_shader_timer_timeout() -> void:
 func _on_tree_entered() -> void:
 	print("en")
 	pauseMenu = get_tree().current_scene.find_child("pauseMenu")
-
