@@ -337,10 +337,6 @@ area_name = "end_of_the_road"
 [node name="CollisionShape2D" parent="interactables/interactable_f/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_pglaa")
 
-[node name="interactable_ff" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(60, -779)
-object_name = "object_ff"
-
 [node name="blocks" type="Node" parent="."]
 
 [node name="block_1" parent="blocks" instance=ExtResource("7_aivve")]
@@ -403,7 +399,7 @@ scale = Vector2(2, 2)
 [node name="mansion_outside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_outside_bounds"]
-polygon = PackedVector2Array(45, 185, 113, 184, 112, 163, 203, 165, 204, -36, 136, -36, 136, -134, 141, -134, 142, -238, 142, -286, 171, -286, 170, -471, 152, -471, 152, -544, 114, -543, 113, -553, 90, -552, 89, -540, 54, -540, 53, -553, -17, -552, -18, -543, -47, -543, -47, -552, -95, -553, -95, -501, -178, -503, -178, -545, -222, -545, -221, -487, -386, -488, -386, -519, -414, -519, -413, -487, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -755, -489, -883, -491, -883, -420, -755, -419, -754, -370, -721, -368, -721, -345, -723, -104, -734, -91, -847, -91, -848, -73, -850, 7, -853, 166, -502, 165, -501, 63, -55, 61, -49, 61, -48, 162, 44, 162, 42, 183, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -134, 229, -143, 229, 208, 38, 206, 43, 185)
+polygon = PackedVector2Array(45, 185, 113, 184, 112, 163, 203, 165, 204, -36, 136, -36, 136, -134, 141, -134, 142, -238, 142, -286, 171, -286, 171, -460, 153, -462, 152, -518, 161, -518, 160, -547, 113, -546, 113, -553, -172, -553, -172, -546, -220, -544, -221, -487, -386, -488, -386, -519, -414, -519, -413, -487, -538, -487, -538, -496, -558, -496, -561, -526, -753, -525, -755, -489, -883, -491, -883, -420, -755, -419, -754, -370, -721, -368, -721, -345, -723, -104, -734, -91, -847, -91, -848, -73, -850, 7, -853, 166, -502, 165, -501, 63, -55, 61, -49, 61, -48, 162, 44, 162, 42, 183, -54, 182, -54, 87, -487, 87, -489, 190, -881, 178, -885, -207, -733, -203, -735, -326, -911, -325, -909, -622, -524, -622, -521, -561, -252, -558, -258, -665, 191, -659, 186, -275, 150, -265, 149, -134, 229, -143, 229, 208, 38, 206, 43, 185)
 
 [node name="mansion_inside_bounds" type="StaticBody2D" parent="."]
 
@@ -423,9 +419,6 @@ position = Vector2(175, 173)
 
 [node name="window2" parent="windows" instance=ExtResource("13_canj4")]
 position = Vector2(-774, 163)
-
-[node name="window3" parent="windows" instance=ExtResource("13_canj4")]
-position = Vector2(-382, -679)
 
 [node name="window4" parent="windows" instance=ExtResource("13_canj4")]
 position = Vector2(37, -561)
