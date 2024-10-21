@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsgpnrmxve71" path="res://assets/tilesets/map_complete.png" id="6_yj362"]
 [ext_resource type="Texture2D" uid="uid://howu5epvi1sp" path="res://assets/tilesets/map_layers/map_floor_layer.png" id="7_4ausw"]
 [ext_resource type="PackedScene" uid="uid://uj0jaa43byh8" path="res://scenes/block.tscn" id="7_aivve"]
-[ext_resource type="Texture2D" uid="uid://dhpniqkx26c7m" path="res://assets/objects/chest_01.png" id="8_dpa85"]
 [ext_resource type="Texture2D" uid="uid://bmqshqlssijuw" path="res://assets/tilesets/map_layers/map_object_layer.png" id="8_igrw6"]
-[ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 [ext_resource type="Texture2D" uid="uid://bpx1jaab5u1x" path="res://assets/tilesets/map_layers/map_wall_layer.png" id="9_aehvn"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
 [ext_resource type="Texture2D" uid="uid://bj345yr65gtfx" path="res://assets/tilesets/map_layers/map_spooky_door.png" id="12_asn06"]
@@ -24,11 +22,15 @@
 [ext_resource type="AudioStream" uid="uid://ccxyr1y8k11ec" path="res://assets/sounds/sfx/SFX_ObjectB_Knife.ogg" id="14_c0dyx"]
 [ext_resource type="PackedScene" uid="uid://phu3valtba5m" path="res://scenes/pause_menu.tscn" id="14_dw0um"]
 [ext_resource type="AudioStream" uid="uid://c2avflumlk6cn" path="res://assets/sounds/sfx/SFX_ObjectC_Photo.ogg" id="15_5ef85"]
+[ext_resource type="Texture2D" uid="uid://cl21i57p6cctj" path="res://assets/objects/interactable_a.png" id="15_tnoeh"]
 [ext_resource type="AudioStream" uid="uid://dd2lyb2x1gx5l" path="res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg" id="16_ritbq"]
 [ext_resource type="AudioStream" uid="uid://cwgbwc16a1upm" path="res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg" id="17_71p50"]
-[ext_resource type="AudioStream" uid="uid://cwuct48yxcsex" path="res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg" id="18_ow234"]
+[ext_resource type="Texture2D" uid="uid://clrdmvts7sn0w" path="res://assets/objects/interactable_b.png" id="17_qa5v2"]
 [ext_resource type="Texture2D" uid="uid://betmotu3gx7n8" path="res://assets/objects/interactable_c.png" id="19_kyg5k"]
+[ext_resource type="Texture2D" uid="uid://b4xnl6v00eg8k" path="res://assets/objects/interactable_bb.png" id="19_n1o11"]
+[ext_resource type="Texture2D" uid="uid://cs6ror2uxshce" path="res://assets/objects/interactable_aa.png" id="20_7k1it"]
 [ext_resource type="Texture2D" uid="uid://d0v3egw1mc5ok" path="res://assets/objects/interactable_d.png" id="21_4hwfh"]
+[ext_resource type="AudioStream" uid="uid://bwud27c6aiv0i" path="res://assets/sounds/sfx/SFX_Object_Blocks.ogg" id="22_kx2wj"]
 [ext_resource type="Texture2D" uid="uid://bcs5tf4w6ak2f" path="res://assets/objects/interactable_e.png" id="23_0sv2m"]
 [ext_resource type="Texture2D" uid="uid://dnmtl8lluw3oh" path="res://assets/objects/interactable_f.png" id="25_3sths"]
 
@@ -189,36 +191,15 @@ sources/9 = SubResource("TileSetAtlasSource_s4o1p")
 sources/10 = SubResource("TileSetAtlasSource_rbcoa")
 sources/12 = SubResource("TileSetAtlasSource_ygieo")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oyv3o"]
-atlas = ExtResource("8_dpa85")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_13gtd"]
-atlas = ExtResource("8_dpa85")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5gsk"]
-atlas = ExtResource("8_dpa85")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_slmdj"]
-atlas = ExtResource("8_dpa85")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_btdyc"]
+atlas = ExtResource("15_tnoeh")
+region = Rect2(0, 0, 559, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v8no6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oyv3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_13gtd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i5gsk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_slmdj")
+"texture": SubResource("AtlasTexture_btdyc")
 }],
 "loop": true,
 "name": &"idle",
@@ -227,36 +208,15 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43n1y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qr0gs"]
-atlas = ExtResource("9_8wbnd")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jrad6"]
-atlas = ExtResource("9_8wbnd")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckw54"]
-atlas = ExtResource("9_8wbnd")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gol4"]
-atlas = ExtResource("9_8wbnd")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_73tc0"]
+atlas = ExtResource("17_qa5v2")
+region = Rect2(0, 0, 559, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j422g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qr0gs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jrad6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ckw54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1gol4")
+"texture": SubResource("AtlasTexture_73tc0")
 }],
 "loop": true,
 "name": &"idle",
@@ -264,6 +224,36 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6idu1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi2ct"]
+atlas = ExtResource("20_7k1it")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x60br"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi2ct")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8cmk"]
+atlas = ExtResource("19_n1o11")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cg6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8cmk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ey0l"]
 atlas = ExtResource("19_kyg5k")
@@ -384,9 +374,12 @@ tile_set = SubResource("TileSet_j2mu5")
 [node name="interactables" type="Node" parent="."]
 
 [node name="interactable_a" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(190, -22)
+position = Vector2(150, 50)
 sprite_frames = SubResource("SpriteFrames_v8no6")
-interact_sound_stream = ExtResource("12_uvm4m")
+interact_sound_stream = ExtResource("14_c0dyx")
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_a/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_a" index="2"]
 dialogue_key = "knife"
@@ -399,10 +392,13 @@ shape = SubResource("RectangleShape2D_43n1y")
 metadata/_edit_use_anchors_ = true
 
 [node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(35, -24)
+position = Vector2(35, -50)
 sprite_frames = SubResource("SpriteFrames_j422g")
-interact_sound_stream = ExtResource("14_c0dyx")
+interact_sound_stream = ExtResource("15_5ef85")
 object_name = "object_b"
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_b/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_b" index="2"]
 dialogue_key = "photo"
@@ -414,22 +410,28 @@ shape = SubResource("RectangleShape2D_6idu1")
 [node name="AreaLabel" parent="interactables/interactable_b/DialogueArea" index="1"]
 metadata/_edit_use_anchors_ = true
 
-[node name="interactable_bb" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-869, -476)
-object_name = "object_bb"
-
 [node name="interactable_aa" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(146, -533)
+position = Vector2(0, -450)
+sprite_frames = SubResource("SpriteFrames_x60br")
+interact_sound_stream = ExtResource("22_kx2wj")
 object_name = "object_aa"
 
+[node name="AnimatedSprite2D" parent="interactables/interactable_aa/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
+
 [node name="interactable_cc" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-222, -351)
+position = Vector2(-220, -370)
+sprite_frames = SubResource("SpriteFrames_1cg6p")
+interact_sound_stream = ExtResource("12_uvm4m")
 object_name = "object_cc"
 
+[node name="AnimatedSprite2D" parent="interactables/interactable_cc/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
+
 [node name="interactable_c" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-835, 100)
+position = Vector2(-780, 30)
 sprite_frames = SubResource("SpriteFrames_stbhv")
-interact_sound_stream = ExtResource("15_5ef85")
+interact_sound_stream = ExtResource("16_ritbq")
 object_name = "object_c"
 
 [node name="AnimatedSprite2D" parent="interactables/interactable_c/RigidBody2D" index="1"]
@@ -447,9 +449,9 @@ shape = SubResource("RectangleShape2D_ecxmb")
 metadata/_edit_use_anchors_ = true
 
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-158, -20)
+position = Vector2(-157, -8)
 sprite_frames = SubResource("SpriteFrames_xn4lg")
-interact_sound_stream = ExtResource("16_ritbq")
+interact_sound_stream = ExtResource("17_71p50")
 object_name = "object_d"
 
 [node name="AnimatedSprite2D" parent="interactables/interactable_d/RigidBody2D" index="1"]
@@ -466,7 +468,7 @@ shape = SubResource("RectangleShape2D_t2vv5")
 metadata/_edit_use_anchors_ = true
 
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-400, -500)
+position = Vector2(-400, -490)
 sprite_frames = SubResource("SpriteFrames_hr4uk")
 interact_sound_stream = ExtResource("17_71p50")
 object_name = "object_e"
@@ -485,9 +487,9 @@ shape = SubResource("RectangleShape2D_pglaa")
 metadata/_edit_use_anchors_ = true
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
-position = Vector2(-707, -250)
+position = Vector2(-700, -250)
 sprite_frames = SubResource("SpriteFrames_pekd2")
-interact_sound_stream = ExtResource("18_ow234")
+interact_sound_stream = ExtResource("12_uvm4m")
 object_name = "object_f"
 
 [node name="AnimatedSprite2D" parent="interactables/interactable_f/RigidBody2D" index="1"]
@@ -570,7 +572,7 @@ polygon = PackedVector2Array(45, 185, 113, 184, 112, 163, 203, 165, 204, -36, 13
 [node name="mansion_inside_bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_inside_bounds"]
-polygon = PackedVector2Array(-26, -35, -26, -8, -47.5633, -8.039, -95, -8, -142, -8, -143, -34, -171, -34, -171, -8, -499, -8, -499, -15, -511, -15, -556, -16, -556, -107, -629, -104, -630, -347, -632, -372, -531, -372, -533, -422, -245, -423, -244, -284, 47, -282, 49, -174, 50, -121, 48, -80, 49, -37, -24, -37, -54, -73, -56, -137, 38, -134, 34, -164, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
+polygon = PackedVector2Array(-26, -35, -26, -8, -47.5633, -8.039, -95, -8, -142, -8, -143, -34, -171, -34, -171, -8, -499, -8, -499, -15, -511, -15, -556, -16, -556, -107, -629, -104, -630, -347, -632, -372, -531, -372, -533, -422, -245, -423, -244, -284, 47, -282, 49, -174, 50, -121, 49, -70, 21, -69, 19, -38, -24, -37, -54, -73, -56, -137, 38, -134, 34, -164, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
 [node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
@@ -598,6 +600,10 @@ position = Vector2(-148, -287)
 [editable path="interactables/interactable_a/DialogueArea"]
 [editable path="interactables/interactable_b"]
 [editable path="interactables/interactable_b/DialogueArea"]
+[editable path="interactables/interactable_aa"]
+[editable path="interactables/interactable_aa/DialogueArea"]
+[editable path="interactables/interactable_cc"]
+[editable path="interactables/interactable_cc/DialogueArea"]
 [editable path="interactables/interactable_c"]
 [editable path="interactables/interactable_c/DialogueArea"]
 [editable path="interactables/interactable_d"]

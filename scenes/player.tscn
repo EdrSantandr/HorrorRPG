@@ -797,7 +797,7 @@ visible = false
 texture = ExtResource("9_xvr3y")
 
 [node name="final_timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 5.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
