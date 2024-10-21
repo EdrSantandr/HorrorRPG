@@ -225,5 +225,6 @@ position = Vector2(408, 15)
 shape = SubResource("RectangleShape2D_fyuje")
 
 [node name="ambience_outside" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 
 [connection signal="body_entered" from="transition" to="." method="_on_transition_body_entered"]
