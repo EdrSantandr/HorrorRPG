@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://0i46woox88yd"]
+[gd_scene load_steps=101 format=3 uid="uid://0i46woox88yd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qt53u"]
 [ext_resource type="Texture2D" uid="uid://c7dp0igodejlr" path="res://assets/characters/player.png" id="2_2fxsh"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cedd71wvxlprm" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep3.ogg" id="4_hf23w"]
 [ext_resource type="AudioStream" uid="uid://d0fncbusblr8x" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep4.ogg" id="5_ilm8b"]
 [ext_resource type="AudioStream" uid="uid://cbcuc63kbaxk0" path="res://assets/sounds/sfx/footsteps/SFX_Player_Footstep5.ogg" id="6_q8buh"]
+[ext_resource type="Texture2D" uid="uid://1wi6vf75aasm" path="res://assets/textures/TEXT_fog.png" id="9_xvr3y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rh23s"]
 atlas = ExtResource("2_2fxsh")
@@ -790,6 +791,9 @@ wait_time = 1.5
 
 [node name="persistent_shader_timer" type="Timer" parent="."]
 wait_time = 6.0
+
+[node name="fog_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("9_xvr3y")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]

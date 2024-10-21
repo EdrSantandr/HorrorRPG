@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var persistent_shader_timer: Timer = $persistent_shader_timer
 
 @export var stepsounds = []
+@onready var fog_sprite: Sprite2D = $fog_sprite
 
 var health: int = 100
 var player_alive: bool = true
@@ -38,12 +39,17 @@ func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	current_camera()
 	update_health()
+	update_fog_position()
 	
 	if health <= 0:
 		player_alive = false # restart game
 		health = 0
 		print("Player has been killed")
 		self.queue_free()
+
+
+func update_fog_position():
+	fog_sprite.position = self.position/16.0
 
 
 func player_movement(delta: float):
@@ -182,7 +188,9 @@ func show_shader_initial():
 
 
 func _on_ready() -> void:
-	pass
+	#pass
+	#Uncomment for the forced fog
+	fog_sprite.hide()
 
 
 func _on_initial_shader_timer_timeout() -> void:
