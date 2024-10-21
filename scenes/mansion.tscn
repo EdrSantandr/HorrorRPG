@@ -574,9 +574,6 @@ polygon = PackedVector2Array(45, 185, 113, 184, 112, 163, 203, 165, 204, -36, 13
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mansion_inside_bounds"]
 polygon = PackedVector2Array(-26, -35, -26, -8, -47.5633, -8.039, -95, -8, -142, -8, -143, -34, -171, -34, -171, -8, -499, -8, -499, -15, -511, -15, -556, -16, -556, -107, -629, -104, -630, -347, -632, -372, -531, -372, -533, -422, -245, -423, -244, -284, 47, -282, 49, -174, 50, -121, 49, -70, 21, -69, 19, -38, -24, -37, -54, -73, -56, -137, 38, -134, 34, -164, 31, -245, 30, -263, -265, -269, -268, -393, -517, -391, -517, -327, -615, -325, -615, -203, -496, -202, -495, -74, -56, -73)
 
-[node name="ambience_inside" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.0
-
 [node name="DialoguePlayer" parent="." instance=ExtResource("12_akbq6")]
 scene_text_file = "res://assets/dialogueText/world_dialogue.json"
 

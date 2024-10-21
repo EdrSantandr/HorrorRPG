@@ -240,9 +240,6 @@ polygon = PackedVector2Array(33, 95, 31, 264, 1043, 273, 1040, 79, 608, 79, 608,
 position = Vector2(513, 53.5)
 shape = SubResource("RectangleShape2D_fyuje")
 
-[node name="ambience_outside" type="AudioStreamPlayer" parent="."]
-volume_db = -15.0
-
 [node name="pauseMenu" parent="." instance=ExtResource("10_ehpmg")]
 
 [connection signal="body_entered" from="transition" to="." method="_on_transition_body_entered"]

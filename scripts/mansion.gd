@@ -1,5 +1,4 @@
 extends Node2D
-@onready var ambience_inside: AudioStreamPlayer2D = $ambience_inside
 @onready var player: CharacterBody2D = $player
 
 @onready var floor_normal: TileMapLayer = $floor_normal
@@ -16,9 +15,8 @@ var time_steady:float = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ambience_inside.stream = Global.SOUND_ambience_inside
-	ambience_inside.bus = &"Music"
-	ambience_inside.play()
+	Global.current_scene = "mansion"
+	AudioPlayer.play_music_level()
 	show_normal_layers(false)
 	show_spooky_layers(true)
 
