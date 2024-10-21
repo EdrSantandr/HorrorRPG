@@ -796,6 +796,9 @@ wait_time = 7.0
 visible = false
 texture = ExtResource("9_xvr3y")
 
+[node name="final_timer" type="Timer" parent="."]
+wait_time = 15.0
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
@@ -806,3 +809,4 @@ texture = ExtResource("9_xvr3y")
 [connection signal="timeout" from="health_regen_timer" to="." method="_on_health_regen_timer_timeout"]
 [connection signal="timeout" from="initial_shader_timer" to="." method="_on_initial_shader_timer_timeout"]
 [connection signal="timeout" from="persistent_shader_timer" to="." method="_on_persistent_shader_timer_timeout"]
+[connection signal="timeout" from="final_timer" to="." method="_on_final_timer_timeout"]

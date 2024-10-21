@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var footstep_sound: AudioStreamPlayer2D = $FootstepSound
 @onready var initial_shader_timer: Timer = $initial_shader_timer
 @onready var persistent_shader_timer: Timer = $persistent_shader_timer
+@onready var final_timer: Timer = $final_timer
 
 @export var stepsounds = []
 @onready var fog_sprite: Sprite2D = $fog_sprite
@@ -229,10 +230,19 @@ func _on_persistent_shader_timer_timeout() -> void:
 				parent.show_spooky_layers(true)
 
 	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
-		Global.scene_changed(self)
-		get_tree().change_scene_to_file("res://scenes/outside.tscn")
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+				parent.show_normal_layers(true)
+				parent.show_spooky_layers(false)
+		final_timer.start()
 
 
 func _on_tree_entered() -> void:
 	print("en")
 	pauseMenu = get_tree().current_scene.find_child("pauseMenu")
+
+
+func _on_final_timer_timeout() -> void:
+	Global.scene_changed(self)
+	get_tree().change_scene_to_file("res://scenes/outside.tscn")
