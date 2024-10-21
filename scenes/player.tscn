@@ -790,7 +790,7 @@ unique_name_in_owner = true
 wait_time = 1.5
 
 [node name="persistent_shader_timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 7.0
 
 [node name="fog_sprite" type="Sprite2D" parent="."]
 visible = false

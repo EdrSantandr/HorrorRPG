@@ -213,7 +213,7 @@ func _on_initial_shader_timer_timeout() -> void:
 		add_child(persistent_shader_instanced)
 		var parent = get_parent()
 		if parent != null:
-			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && !Global.is_showing_spooky_layers:
 				parent.show_normal_layers(false)
 				parent.show_spooky_layers(true)
 		persistent_shader_timer.start()
@@ -224,7 +224,7 @@ func _on_persistent_shader_timer_timeout() -> void:
 		persistent_shader_instanced.queue_free()
 		var parent = get_parent()
 		if parent != null:
-			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && Global.is_showing_spooky_layers:
 				parent.show_normal_layers(true)
 				parent.show_spooky_layers(false)
 

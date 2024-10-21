@@ -42,6 +42,9 @@ var is_open_door_1:bool = false
 var is_open_door_2:bool = false
 var is_open_door_3:bool = false
 
+var is_showing_spooky_layers:bool = false
+var spooking_time:float = 0.0
+
 func scene_changed(body: Node2D):
 	if is_transition_scene:
 		is_transition_scene = false
