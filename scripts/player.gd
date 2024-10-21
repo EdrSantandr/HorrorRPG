@@ -211,12 +211,22 @@ func _on_initial_shader_timer_timeout() -> void:
 		var scene = load("res://scenes/tests/shader_test_3.tscn")
 		persistent_shader_instanced = scene.instantiate()
 		add_child(persistent_shader_instanced)
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+				parent.show_normal_layers(false)
+				parent.show_spooky_layers(true)
 		persistent_shader_timer.start()
 
 
 func _on_persistent_shader_timer_timeout() -> void:
 	if (persistent_shader_instanced != null):
 		persistent_shader_instanced.queue_free()
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+				parent.show_normal_layers(true)
+				parent.show_spooky_layers(false)
 
 	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
 		Global.scene_changed(self)
