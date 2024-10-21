@@ -16,6 +16,7 @@ const SOUND_object_d = preload("res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg
 const SOUND_object_e = preload("res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg")
 const SOUND_object_f = preload("res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg")
 const SOUND_door = preload("res://assets/sounds/sfx/SFX_Object_Door.ogg")
+const SOUND_glass = preload("res://assets/sounds/sfx/SFX_Object_Glass.ogg")
 
 var player_ref: CharacterBody2D = null 
 
