@@ -796,6 +796,7 @@ wait_time = 6.0
 texture = ExtResource("9_xvr3y")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="area_exited" from="player_hitbox" to="." method="_on_player_hitbox_area_exited"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=36 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
 [ext_resource type="PackedScene" uid="uid://5itvtg0f7dn4" path="res://scenes/window.tscn" id="13_canj4"]
+[ext_resource type="PackedScene" uid="uid://phu3valtba5m" path="res://scenes/pause_menu.tscn" id="14_dw0um"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -360,6 +361,8 @@ position = Vector2(34, -553)
 
 [node name="window5" parent="Node" instance=ExtResource("13_canj4")]
 position = Vector2(-116, -341)
+
+[node name="pauseMenu" parent="." instance=ExtResource("14_dw0um")]
 
 [editable path="interactables/interactable_a"]
 [editable path="interactables/interactable_a/DialogueArea"]
