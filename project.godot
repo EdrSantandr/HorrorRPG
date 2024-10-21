@@ -20,6 +20,12 @@ config/icon="res://assets/icon.svg"
 Global="*res://scripts/global.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 
+[display]
+
+window/size/viewport_width=900
+window/size/viewport_height=600
+window/size/resizable=false
+
 [input]
 
 move_right={
@@ -70,3 +76,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
