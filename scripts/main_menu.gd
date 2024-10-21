@@ -2,6 +2,7 @@ extends Control
 @onready var options: CanvasLayer = $Options
 
 func _ready() -> void:
+	$AudioStreamPlayer2D.play()
 	$VBoxContainer/StartButton.grab_focus()
 	options.visible = false
 
