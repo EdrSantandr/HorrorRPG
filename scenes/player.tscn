@@ -793,6 +793,7 @@ wait_time = 1.5
 wait_time = 6.0
 
 [node name="fog_sprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("9_xvr3y")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
