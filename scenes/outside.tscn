@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://tf15rxx8mxkp"]
+[gd_scene load_steps=20 format=4 uid="uid://tf15rxx8mxkp"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_uw6xq"]
 [ext_resource type="Texture2D" uid="uid://ckujrvgrcye12" path="res://assets/tilesets/grass.png" id="1_wpx5f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="6_5t4s2"]
 [ext_resource type="Texture2D" uid="uid://dvf6vlq2voyf3" path="res://assets/tilesets/walls/walls.png" id="7_2fbr0"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="7_eqjey"]
+[ext_resource type="PackedScene" uid="uid://phu3valtba5m" path="res://scenes/pause_menu.tscn" id="10_ehpmg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xolp0"]
 texture = ExtResource("1_wpx5f")
@@ -226,5 +227,7 @@ shape = SubResource("RectangleShape2D_fyuje")
 
 [node name="ambience_outside" type="AudioStreamPlayer" parent="."]
 volume_db = -15.0
+
+[node name="pauseMenu" parent="." instance=ExtResource("10_ehpmg")]
 
 [connection signal="body_entered" from="transition" to="." method="_on_transition_body_entered"]

@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var stepsounds = []
 @onready var fog_sprite: Sprite2D = $fog_sprite
 
+var pauseMenu = null
+
 var health: int = 100
 var player_alive: bool = true
 var attack_state: bool = false
@@ -80,6 +82,10 @@ func player_movement(delta: float):
 	interact_state = Input.is_action_just_released("interaction")
 	if interact_state:
 		handle_interaction()
+		
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu.visible = true
+		get_tree().paused = true
 
 
 func handle_interaction():
@@ -211,7 +217,13 @@ func _on_initial_shader_timer_timeout() -> void:
 func _on_persistent_shader_timer_timeout() -> void:
 	if (persistent_shader_instanced != null):
 		persistent_shader_instanced.queue_free()
-		
+
 	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
 		Global.scene_changed(self)
 		get_tree().change_scene_to_file("res://scenes/outside.tscn")
+
+
+func _on_tree_entered() -> void:
+	print("en")
+	pauseMenu = get_tree().current_scene.find_child("pauseMenu")
+
