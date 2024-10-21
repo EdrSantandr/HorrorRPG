@@ -25,7 +25,7 @@ AudioPlayer="*res://scenes/audio_player.tscn"
 
 window/size/viewport_width=1000
 window/size/viewport_height=600
-window/size/resizable=false
+window/size/always_on_top=true
 
 [input]
 
