@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=68 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
@@ -27,6 +27,10 @@
 [ext_resource type="AudioStream" uid="uid://dd2lyb2x1gx5l" path="res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg" id="16_ritbq"]
 [ext_resource type="AudioStream" uid="uid://cwgbwc16a1upm" path="res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg" id="17_71p50"]
 [ext_resource type="AudioStream" uid="uid://cwuct48yxcsex" path="res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg" id="18_ow234"]
+[ext_resource type="Texture2D" uid="uid://betmotu3gx7n8" path="res://assets/objects/interactable_c.png" id="19_kyg5k"]
+[ext_resource type="Texture2D" uid="uid://d0v3egw1mc5ok" path="res://assets/objects/interactable_d.png" id="21_4hwfh"]
+[ext_resource type="Texture2D" uid="uid://bcs5tf4w6ak2f" path="res://assets/objects/interactable_e.png" id="23_0sv2m"]
+[ext_resource type="Texture2D" uid="uid://dnmtl8lluw3oh" path="res://assets/objects/interactable_f.png" id="25_3sths"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -261,11 +265,71 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6idu1"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ey0l"]
+atlas = ExtResource("19_kyg5k")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stbhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ey0l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecxmb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_587vb"]
+atlas = ExtResource("21_4hwfh")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn4lg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_587vb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2vv5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtxk3"]
+atlas = ExtResource("23_0sv2m")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hr4uk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtxk3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pglaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3isb2"]
+atlas = ExtResource("25_3sths")
+region = Rect2(0, 0, 559, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pekd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3isb2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="mansion" type="Node2D"]
 y_sort_enabled = true
@@ -364,8 +428,13 @@ object_name = "object_cc"
 
 [node name="interactable_c" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-835, 100)
+sprite_frames = SubResource("SpriteFrames_stbhv")
 interact_sound_stream = ExtResource("15_5ef85")
 object_name = "object_c"
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_c/RigidBody2D" index="1"]
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_c" index="2"]
 dialogue_key = "doll"
@@ -379,8 +448,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-158, -20)
+sprite_frames = SubResource("SpriteFrames_xn4lg")
 interact_sound_stream = ExtResource("16_ritbq")
 object_name = "object_d"
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_d/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_d" index="2"]
 dialogue_key = "flower_bouquet"
@@ -394,8 +467,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-400, -500)
+sprite_frames = SubResource("SpriteFrames_hr4uk")
 interact_sound_stream = ExtResource("17_71p50")
 object_name = "object_e"
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_e/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_e" index="2"]
 dialogue_key = "xylophone"
@@ -409,8 +486,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-707, -250)
+sprite_frames = SubResource("SpriteFrames_pekd2")
 interact_sound_stream = ExtResource("18_ow234")
 object_name = "object_f"
+
+[node name="AnimatedSprite2D" parent="interactables/interactable_f/RigidBody2D" index="1"]
+scale = Vector2(0.1, 0.1)
 
 [node name="DialogueArea" parent="interactables/interactable_f" index="2"]
 dialogue_key = "end_of_the_road"
