@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var initial_shader_timer: Timer = $initial_shader_timer
 @onready var persistent_shader_timer: Timer = $persistent_shader_timer
 @onready var final_timer: Timer = $final_timer
+@onready var final_sound: AudioStreamPlayer2D = $final_sound
 
 @export var stepsounds = []
 @onready var fog_sprite: Sprite2D = $fog_sprite
@@ -198,8 +199,8 @@ func _on_ready() -> void:
 	Global.player_ref = self
 	#Uncomment for the forced fog
 	fog_sprite.hide()
-	
-
+	final_sound.stream = Global.SOUND_glass
+	final_sound.bus = &"SFX"
 
 func _on_initial_shader_timer_timeout() -> void:
 	if (shader_instanced != null):
@@ -236,6 +237,7 @@ func _on_persistent_shader_timer_timeout() -> void:
 				parent.show_normal_layers(true)
 				parent.show_spooky_layers(false)
 		final_timer.start()
+		final_sound.play()
 
 
 func _on_tree_entered() -> void:
