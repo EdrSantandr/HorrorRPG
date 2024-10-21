@@ -1,7 +1,8 @@
 extends Control
-@onready var options: Control = $Options
+@onready var options: CanvasLayer = $Options
 
 func _ready() -> void:
+	$VBoxContainer/StartButton.grab_focus()
 	options.visible = false
 
 func _on_start_button_pressed() -> void:
@@ -12,3 +13,4 @@ func _on_exit_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	options.visible = true
+	get_tree().paused = true

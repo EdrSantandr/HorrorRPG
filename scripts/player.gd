@@ -7,9 +7,12 @@ extends CharacterBody2D
 @onready var footstep_sound: AudioStreamPlayer2D = $FootstepSound
 @onready var initial_shader_timer: Timer = $initial_shader_timer
 @onready var persistent_shader_timer: Timer = $persistent_shader_timer
+@onready var final_timer: Timer = $final_timer
 
 @export var stepsounds = []
 @onready var fog_sprite: Sprite2D = $fog_sprite
+
+var pauseMenu = null
 
 var health: int = 100
 var player_alive: bool = true
@@ -80,6 +83,10 @@ func player_movement(delta: float):
 	interact_state = Input.is_action_just_released("interaction")
 	if interact_state:
 		handle_interaction()
+		
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu.visible = true
+		get_tree().paused = true
 
 
 func handle_interaction():
@@ -135,7 +142,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 
 func current_camera():
-	if Global.current_scene == "world":
+	if Global.current_scene == "outside":
 		world_camera.enabled = true
 		mansion_camera.enabled = false
 		shader_initial_can_show = false
@@ -188,9 +195,10 @@ func show_shader_initial():
 
 
 func _on_ready() -> void:
-	#pass
+	Global.player_ref = self
 	#Uncomment for the forced fog
 	fog_sprite.hide()
+	
 
 
 func _on_initial_shader_timer_timeout() -> void:
@@ -204,9 +212,37 @@ func _on_initial_shader_timer_timeout() -> void:
 		var scene = load("res://scenes/tests/shader_test_3.tscn")
 		persistent_shader_instanced = scene.instantiate()
 		add_child(persistent_shader_instanced)
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && !Global.is_showing_spooky_layers:
+				parent.show_normal_layers(true)
+				parent.show_spooky_layers(false)
 		persistent_shader_timer.start()
 
 
 func _on_persistent_shader_timer_timeout() -> void:
 	if (persistent_shader_instanced != null):
 		persistent_shader_instanced.queue_free()
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && Global.is_showing_spooky_layers:
+				parent.show_normal_layers(false)
+				parent.show_spooky_layers(true)
+
+	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
+		var parent = get_parent()
+		if parent != null:
+			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers"):
+				parent.show_normal_layers(true)
+				parent.show_spooky_layers(false)
+		final_timer.start()
+
+
+func _on_tree_entered() -> void:
+	print("en")
+	pauseMenu = get_tree().current_scene.find_child("pauseMenu")
+
+
+func _on_final_timer_timeout() -> void:
+	Global.scene_changed(self)
+	get_tree().change_scene_to_file("res://scenes/outside.tscn")

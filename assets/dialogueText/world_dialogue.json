@@ -7,23 +7,37 @@
 		"This is the end"	
 	],
 	"knife": [
-		"A knife with a rusted tip.",
-		"It gives off a faint, metallic smell."
+		"(A knife with a rusted tip.)",
+		"(It gives off a faint, metallic smell.)",
+		"Why is there a knife here? It's sticky."
 	],
 	"photo": [
-		"A photo of a young couple who appear to be lovers.",
-		"Dark red stains obscure their faces, making it impossible to identify them."
+		"(A photo of a young couple who appear to be lovers.)",
+		"(Dark red stains obscure their faces, making it impossible to identify them.)"
 	],
 	"doll": [
-		"A doll favored by children.",
-		"A Christmas gift from 1984.",
+		"(A doll favored by children.)",
+		"(A Christmas gift from 1984.)",
+		"What a cute teddy.",
+		"When was the last time I played with one of these?",
 	],
 	"flower_bouquet": [
-		"A bouquet of white daisies.",
-		"The message of white daisies carries is pure love."
+		"(A bouquet of white daisies.)",
+		"(The message of white daisies carries is pure love.)",
+		"Daisies...",
+		"Huh, even as a ghost, I can still smell flowers.",
+		"But why are they just left out here? They’re gonna wilt."
 	],
 	"xylophone": [
-		"An old xylophone.",
-		"The note 'G' doesn’t play properly."
+		"(An old xylophone.)",
+		"(The note 'G' doesn’t play properly.)",
+		"Merry had a little lamb, little lamb..."
+	],
+	"plant_pot": [
+		"(The ghost’s hand passes through it.)",
+		"Great... I can’t even touch this."
+	],
+	"newspaper": [
+		"(The ghost’s hand passes through.)"
 	],
 }
