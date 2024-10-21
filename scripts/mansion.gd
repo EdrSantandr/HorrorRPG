@@ -19,8 +19,8 @@ func _ready() -> void:
 	ambience_inside.stream = Global.SOUND_ambience_inside
 	ambience_inside.bus = &"Music"
 	ambience_inside.play()
-	show_normal_layers(true)
-	show_spooky_layers(false)
+	show_normal_layers(false)
+	show_spooky_layers(true)
 
 func _process(delta: float) -> void:
 	if Global.is_showing_spooky_layers:
@@ -72,14 +72,12 @@ func show_spooky_layers(in_show: bool):
 		object_spooky.show()
 		wall_spooky.show()
 		door_spooky.hide()
-		Global.is_showing_spooky_layers = true
-		Global.spooking_time = 0.0
+
 	if !in_show:
 		floor_spooky.hide()
 		object_spooky.hide()
 		wall_spooky.hide()
 		door_spooky.hide()
-		Global.is_showing_spooky_layers = false
 		Global.spooking_time = 0.0
 
 
@@ -88,7 +86,11 @@ func show_normal_layers(in_show: bool):
 		floor_normal.show()
 		object_normal.show()
 		wall_normal.show()
+		Global.is_showing_spooky_layers = true
+		Global.spooking_time = 0.0
 	if !in_show:
 		floor_normal.hide()
 		object_normal.hide()
 		wall_normal.hide()
+		Global.is_showing_spooky_layers = false
+		Global.spooking_time = 0.0

@@ -214,8 +214,8 @@ func _on_initial_shader_timer_timeout() -> void:
 		var parent = get_parent()
 		if parent != null:
 			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && !Global.is_showing_spooky_layers:
-				parent.show_normal_layers(false)
-				parent.show_spooky_layers(true)
+				parent.show_normal_layers(true)
+				parent.show_spooky_layers(false)
 		persistent_shader_timer.start()
 
 
@@ -225,8 +225,8 @@ func _on_persistent_shader_timer_timeout() -> void:
 		var parent = get_parent()
 		if parent != null:
 			if parent.has_method("show_spooky_layers") && parent.has_method("show_normal_layers") && Global.is_showing_spooky_layers:
-				parent.show_normal_layers(true)
-				parent.show_spooky_layers(false)
+				parent.show_normal_layers(false)
+				parent.show_spooky_layers(true)
 
 	if Global.current_scene == "mansion" && Global.is_transition_scene && Global.is_interacted_object_final_aa && Global.is_interacted_object_final_cc:
 		Global.scene_changed(self)
