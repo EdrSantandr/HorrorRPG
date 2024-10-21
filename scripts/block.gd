@@ -31,7 +31,7 @@ func open_block():
 	#Here put the dialogue on top of the screen
 	#Start the shader showing
 	animated_sprite_2d.stop()
-	unlock_loop.play()
+	#unlock_loop.play()
 	unlock_sound.play()
 	spooky_timer.start()
 
@@ -39,6 +39,7 @@ func open_block():
 func _on_ready() -> void:
 	unlock_loop.stream = Global.SOUND_LOOP_unlock_door
 	unlock_sound.stream = Global.SOUND_door
+	unlock_sound.bus = &"SFX"
 	animated_sprite_2d.play()
 
 

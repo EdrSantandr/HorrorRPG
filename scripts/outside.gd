@@ -20,7 +20,7 @@ func _on_transition_body_entered(body: Node2D) -> void:
 
 func change_scene(body: Node2D):
 	if Global.is_transition_scene:
-		if Global.current_scene == "world":
+		if Global.current_scene == "outside":
 			ambience_outside.stop()
 			Global.scene_changed(body)
 			get_tree().change_scene_to_file("res://scenes/mansion.tscn")

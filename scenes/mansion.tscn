@@ -1,11 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://bj6gv2y8bh3kp"]
+[gd_scene load_steps=56 format=3 uid="uid://bj6gv2y8bh3kp"]
 
 [ext_resource type="Script" path="res://scripts/mansion.gd" id="1_57nrc"]
 [ext_resource type="Texture2D" uid="uid://dx0qm5dy3dpes" path="res://assets/tilesets/plains.png" id="2_lvtdl"]
 [ext_resource type="Texture2D" uid="uid://ckujrvgrcye12" path="res://assets/tilesets/grass.png" id="3_yyhi6"]
+[ext_resource type="Texture2D" uid="uid://c5f5ovtvppfc4" path="res://assets/tilesets/map_layers/map_spooky_objects.png" id="4_8o6af"]
 [ext_resource type="Texture2D" uid="uid://cjc2apgyhsj4k" path="res://assets/objects/objects.png" id="4_iao4n"]
 [ext_resource type="Texture2D" uid="uid://cmuou3fowdebx" path="res://assets/tilesets/map_tiles.png" id="5_0ds42"]
 [ext_resource type="PackedScene" uid="uid://0i46woox88yd" path="res://scenes/player.tscn" id="5_d85je"]
+[ext_resource type="Texture2D" uid="uid://b1bdhjn3rk18h" path="res://assets/tilesets/map_layers/map_spooky_walls.png" id="5_f36g5"]
 [ext_resource type="PackedScene" uid="uid://dyc1utaevwybl" path="res://scenes/interactable.tscn" id="6_8slio"]
 [ext_resource type="Texture2D" uid="uid://bhsgpnrmxve71" path="res://assets/tilesets/map_complete.png" id="6_yj362"]
 [ext_resource type="Texture2D" uid="uid://howu5epvi1sp" path="res://assets/tilesets/map_layers/map_floor_layer.png" id="7_4ausw"]
@@ -15,8 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://chh6371263o65" path="res://assets/objects/chest_02.png" id="9_8wbnd"]
 [ext_resource type="Texture2D" uid="uid://bpx1jaab5u1x" path="res://assets/tilesets/map_layers/map_wall_layer.png" id="9_aehvn"]
 [ext_resource type="PackedScene" uid="uid://cmlxm70bi611s" path="res://scenes/dialogue_player.tscn" id="12_akbq6"]
+[ext_resource type="Texture2D" uid="uid://bj345yr65gtfx" path="res://assets/tilesets/map_layers/map_spooky_door.png" id="12_asn06"]
+[ext_resource type="AudioStream" uid="uid://ffxasfhr2frh" path="res://assets/sounds/sfx/SFX_ObjectA_AttendanceBook.ogg" id="12_uvm4m"]
 [ext_resource type="PackedScene" uid="uid://5itvtg0f7dn4" path="res://scenes/window.tscn" id="13_canj4"]
+[ext_resource type="Texture2D" uid="uid://tj4wka43g5pi" path="res://assets/tilesets/map_layers/map_spooky_floor.png" id="13_cgnle"]
+[ext_resource type="AudioStream" uid="uid://ccxyr1y8k11ec" path="res://assets/sounds/sfx/SFX_ObjectB_Knife.ogg" id="14_c0dyx"]
 [ext_resource type="PackedScene" uid="uid://phu3valtba5m" path="res://scenes/pause_menu.tscn" id="14_dw0um"]
+[ext_resource type="AudioStream" uid="uid://c2avflumlk6cn" path="res://assets/sounds/sfx/SFX_ObjectC_Photo.ogg" id="15_5ef85"]
+[ext_resource type="AudioStream" uid="uid://dd2lyb2x1gx5l" path="res://assets/sounds/sfx/SFX_ObjectD_DollPapa.ogg" id="16_ritbq"]
+[ext_resource type="AudioStream" uid="uid://cwgbwc16a1upm" path="res://assets/sounds/sfx/SFX_ObjectE_Flowers.ogg" id="17_71p50"]
+[ext_resource type="AudioStream" uid="uid://cwuct48yxcsex" path="res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg" id="18_ow234"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbkh4"]
 texture = ExtResource("2_lvtdl")
@@ -83,6 +93,16 @@ texture = ExtResource("2_lvtdl")
 texture = ExtResource("3_yyhi6")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbcoa"]
+texture = ExtResource("4_8o6af")
+0:0/size_in_atlas = Vector2i(34, 28)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygieo"]
+texture = ExtResource("5_f36g5")
+0:0/size_in_atlas = Vector2i(34, 28)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_euru5"]
 texture = ExtResource("4_iao4n")
 0:5/size_in_atlas = Vector2i(3, 4)
@@ -140,6 +160,16 @@ texture = ExtResource("9_aehvn")
 0:0/size_in_atlas = Vector2i(34, 28)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hnfc"]
+texture = ExtResource("12_asn06")
+0:0/size_in_atlas = Vector2i(34, 28)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4o1p"]
+texture = ExtResource("13_cgnle")
+0:0/size_in_atlas = Vector2i(34, 28)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_j2mu5"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dbkh4")
@@ -150,6 +180,10 @@ sources/4 = SubResource("TileSetAtlasSource_3eu6v")
 sources/5 = SubResource("TileSetAtlasSource_5pbvj")
 sources/6 = SubResource("TileSetAtlasSource_2epj7")
 sources/7 = SubResource("TileSetAtlasSource_f3rjl")
+sources/8 = SubResource("TileSetAtlasSource_8hnfc")
+sources/9 = SubResource("TileSetAtlasSource_s4o1p")
+sources/10 = SubResource("TileSetAtlasSource_rbcoa")
+sources/12 = SubResource("TileSetAtlasSource_ygieo")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyv3o"]
 atlas = ExtResource("8_dpa85")
@@ -243,10 +277,22 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 5, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_j2mu5")
 
+[node name="floor_spooky" type="TileMapLayer" parent="."]
+position = Vector2(-100, -120)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 9, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_j2mu5")
+
 [node name="object_normal" type="TileMapLayer" parent="."]
 position = Vector2(-100, -120)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 6, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_j2mu5")
+
+[node name="object_spooky" type="TileMapLayer" parent="."]
+position = Vector2(-100, -120)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 10, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_j2mu5")
 
 [node name="wall_normal" type="TileMapLayer" parent="."]
@@ -257,11 +303,26 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 7, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_j2mu5")
 
+[node name="wall_spooky" type="TileMapLayer" parent="."]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(-100, -120)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 248, 255, 253, 255, 12, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_j2mu5")
+
+[node name="door_spooky" type="TileMapLayer" parent="."]
+position = Vector2(-100, -120)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 248, 255, 255, 255, 8, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_j2mu5")
+
 [node name="interactables" type="Node" parent="."]
 
 [node name="interactable_a" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(190, -22)
 sprite_frames = SubResource("SpriteFrames_v8no6")
+interact_sound_stream = ExtResource("12_uvm4m")
 
 [node name="DialogueArea" parent="interactables/interactable_a" index="2"]
 dialogue_key = "knife"
@@ -270,9 +331,13 @@ area_name = "knife"
 [node name="CollisionShape2D" parent="interactables/interactable_a/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_43n1y")
 
+[node name="AreaLabel" parent="interactables/interactable_a/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="interactable_b" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(35, -24)
 sprite_frames = SubResource("SpriteFrames_j422g")
+interact_sound_stream = ExtResource("14_c0dyx")
 object_name = "object_b"
 
 [node name="DialogueArea" parent="interactables/interactable_b" index="2"]
@@ -281,6 +346,9 @@ area_name = "photo"
 
 [node name="CollisionShape2D" parent="interactables/interactable_b/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_6idu1")
+
+[node name="AreaLabel" parent="interactables/interactable_b/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
 
 [node name="interactable_bb" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-869, -476)
@@ -296,6 +364,7 @@ object_name = "object_cc"
 
 [node name="interactable_c" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-835, 100)
+interact_sound_stream = ExtResource("15_5ef85")
 object_name = "object_c"
 
 [node name="DialogueArea" parent="interactables/interactable_c" index="2"]
@@ -305,8 +374,12 @@ area_name = "doll"
 [node name="CollisionShape2D" parent="interactables/interactable_c/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_ecxmb")
 
+[node name="AreaLabel" parent="interactables/interactable_c/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="interactable_d" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-158, -20)
+interact_sound_stream = ExtResource("16_ritbq")
 object_name = "object_d"
 
 [node name="DialogueArea" parent="interactables/interactable_d" index="2"]
@@ -316,8 +389,12 @@ area_name = "flower bouquet"
 [node name="CollisionShape2D" parent="interactables/interactable_d/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_t2vv5")
 
+[node name="AreaLabel" parent="interactables/interactable_d/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="interactable_e" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-400, -500)
+interact_sound_stream = ExtResource("17_71p50")
 object_name = "object_e"
 
 [node name="DialogueArea" parent="interactables/interactable_e" index="2"]
@@ -327,8 +404,12 @@ area_name = "xylophone"
 [node name="CollisionShape2D" parent="interactables/interactable_e/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_pglaa")
 
+[node name="AreaLabel" parent="interactables/interactable_e/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="interactable_f" parent="interactables" instance=ExtResource("6_8slio")]
 position = Vector2(-707, -250)
+interact_sound_stream = ExtResource("18_ow234")
 object_name = "object_f"
 
 [node name="DialogueArea" parent="interactables/interactable_f" index="2"]
@@ -337,6 +418,9 @@ area_name = "end_of_the_road"
 
 [node name="CollisionShape2D" parent="interactables/interactable_f/DialogueArea" index="0"]
 shape = SubResource("RectangleShape2D_pglaa")
+
+[node name="AreaLabel" parent="interactables/interactable_f/DialogueArea" index="1"]
+metadata/_edit_use_anchors_ = true
 
 [node name="blocks" type="Node" parent="."]
 

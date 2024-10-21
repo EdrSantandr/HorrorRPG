@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyc1utaevwybl"]
+[gd_scene load_steps=12 format=3 uid="uid://dyc1utaevwybl"]
 
 [ext_resource type="Texture2D" uid="uid://dhpniqkx26c7m" path="res://assets/objects/chest_01.png" id="1_01ewd"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="1_c3yar"]
 [ext_resource type="PackedScene" uid="uid://bb2q565b4nckj" path="res://scenes/dialogue_area.tscn" id="3_vg34b"]
+[ext_resource type="AudioStream" uid="uid://cwuct48yxcsex" path="res://assets/sounds/sfx/SFX_Object_ChestOpen.ogg" id="4_iknld"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gd40"]
 radius = 41.0122
@@ -71,6 +72,9 @@ animation = &"idle"
 
 [node name="DialogueArea" parent="." instance=ExtResource("3_vg34b")]
 unique_name_in_owner = true
+
+[node name="interact_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_iknld")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
